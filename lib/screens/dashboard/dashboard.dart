@@ -112,7 +112,8 @@ class _DashBoardState extends State<DashBoard> {
                   CircleAvatar(
                       maxRadius: 40,
                       child: GridTile(child: Text(index.toString()))),
-                  Text(dashBordCtrl.dashBordName[index])
+                  Text(dashBordCtrl.dashBordName[index]),
+                  Text("hi")
                 ],
               ),
             );
