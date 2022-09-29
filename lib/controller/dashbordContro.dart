@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:schoolmanagement/custom_widgets/colors.dart';
 import 'package:schoolmanagement/custom_widgets/custom_sizes.dart';
 import 'package:schoolmanagement/drawerListScreen/parentsListPage.dart';
 import 'package:schoolmanagement/drawerListScreen/studentListPage.dart';
@@ -79,25 +80,34 @@ class DashBordController extends GetxController {
         child: Column(
           children: [
             DrawerHeader(
-                child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    const CircleAvatar(
-                      maxRadius: 20,
-                      child: Text("Hi"),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text("Student App"),
-                        const Text("vivek.yadva@sapple.co.in")
-                      ],
-                    ),
-                  ],
-                ),
-              ],
+                child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: AppPadding.p14),
+              child: Column(
+                children: [
+                  // Container(
+                  //   decoration: BoxDecoration(
+                  //     color: Colors.blue,
+                  //   ),
+                  //   child: Text("School Master"),
+                  // ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      const CircleAvatar(
+                        maxRadius: 20,
+                        child: Text("Hi"),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text("Student App"),
+                          const Text("vivek.yadva@sapple.co.in")
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             )),
             Flexible(
               child: ListView.builder(

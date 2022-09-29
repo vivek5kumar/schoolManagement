@@ -61,7 +61,7 @@ class RoundedTextField extends StatelessWidget {
             suffix: suffix,
             // prefix: preFix,
             prefixIcon: prefix,
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(25)),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
           )),
     );
   }

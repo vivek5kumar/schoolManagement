@@ -6,7 +6,8 @@ import 'package:schoolmanagement/custom_widgets/text_formfield.dart';
 import 'package:schoolmanagement/screens/dashboard/dashboard.dart';
 
 class StudentLoginPage extends StatefulWidget {
-  const StudentLoginPage({super.key});
+  String? userName;
+  StudentLoginPage({this.userName, super.key});
   @override
   State<StudentLoginPage> createState() => _StudentLoginPageState();
 }
@@ -19,28 +20,34 @@ class _StudentLoginPageState extends State<StudentLoginPage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      // backgroundColor: kPrimaryColor,
+      // backgroundColor: Colors.white,
       body: Center(
         child: Form(
           key: _formKey,
           child: Padding(
             padding: const EdgeInsets.all(20.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
+            child: ListView(
               children: [
-                SizedBox(
-                  height: size.height * 0.1,
-                  width: size.width * 0.5,
-                  child: const CircleAvatar(
-                    child: Icon(Icons.person),
-                  ),
+                // SizedBox(
+                //   height: size.height * 0.1,
+                //   width: size.width * 0.5,
+                //   child: const CircleAvatar(
+                //     child: Icon(Icons.person),
+                //   ),
+                // ),
+                Image.asset(
+                  "assets/images/login-removebg-preview.png",
                 ),
-                const Text(
-                  "Student Login",
-                  style: TextStyle(
-                      color: kPrimaryLightColor,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
+
+                // ignore: prefer_const_constructors
+                Center(
+                  child: Text(
+                    "${widget.userName.toString()}  Login",
+                    style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
                 SizedBox(
                   height: size.height * 0.02,
@@ -83,17 +90,17 @@ class _StudentLoginPageState extends State<StudentLoginPage> {
                     }
                   },
                 ),
-                TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      "Forgot Password?",
-                      style:
-                          TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-                    )),
+                // TextButton(
+                //     onPressed: () {},
+                //     child: const Text(
+                //       "Forgot Password?",
+                //       style:
+                //           TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                //     )),
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         primary: kpurpleColor,
-                        fixedSize: const Size(200, 40),
+                        fixedSize: const Size(50, 40),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50))),
                     onPressed: () {
@@ -101,22 +108,22 @@ class _StudentLoginPageState extends State<StudentLoginPage> {
                       Get.to(const DashBoard());
                     },
                     child: const Text(
-                      "Login",
+                      "LOGIN",
                       style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     )),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 60.0),
-                  child: Row(
-                    children: [
-                      const Text(
-                        "Don't have account?",
-                        style: TextStyle(color: kPrimaryLightColor),
-                      ),
-                      TextButton(onPressed: () {}, child: const Text("Sign Up"))
-                    ],
-                  ),
-                )
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(horizontal: 60.0),
+                //   child: Row(
+                //     children: [
+                //       const Text(
+                //         "Don't have account?",
+                //         style: TextStyle(color: kPrimaryLightColor),
+                //       ),
+                //       TextButton(onPressed: () {}, child: const Text("Sign Up"))
+                //     ],
+                //   ),
+                // )
               ],
             ),
           ),
