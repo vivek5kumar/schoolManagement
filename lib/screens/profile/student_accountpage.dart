@@ -253,7 +253,6 @@ class _StudentAccountState extends State<StudentAccount> {
                     },
                     child: const Text("Submit")),
               ),
-              Text("hi how r u"),
             ],
           ),
         ),
