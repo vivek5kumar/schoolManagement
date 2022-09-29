@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:schoolmanagement/controller/dashbordContro.dart';
-import 'package:schoolmanagement/screens/ClassRoutine/Class_timeTable.dart';
+import 'package:schoolmanagement/screens/ClassRoutine/class_time.dart';
 import 'package:schoolmanagement/screens/Exam/exam_list.dart';
 import 'package:schoolmanagement/screens/Library/book_libraryList.dart';
 import 'package:schoolmanagement/screens/NoticeBoard/notice_boardpage.dart';
@@ -28,7 +28,7 @@ class _DashBoardState extends State<DashBoard> {
         }
       case 1:
         {
-          // Get.to(const ClassTimeTable());
+          Get.to(const ClassTimeTable());
           break;
         }
       case 2:
@@ -113,7 +113,6 @@ class _DashBoardState extends State<DashBoard> {
                       maxRadius: 40,
                       child: GridTile(child: Text(index.toString()))),
                   Text(dashBordCtrl.dashBordName[index]),
-                  Text("hi")
                 ],
               ),
             );

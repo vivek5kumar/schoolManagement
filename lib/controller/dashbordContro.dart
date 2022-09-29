@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:schoolmanagement/custom_widgets/custom_sizes.dart';
 import 'package:schoolmanagement/drawerListScreen/parentsListPage.dart';
 import 'package:schoolmanagement/drawerListScreen/studentListPage.dart';
 import 'package:schoolmanagement/drawerListScreen/teacherListPage.dart';
@@ -77,32 +78,28 @@ class DashBordController extends GetxController {
       child: Drawer(
         child: Column(
           children: [
-            SizedBox(
-              height: 150,
-              child: DrawerHeader(
-                  child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      const CircleAvatar(
-                        maxRadius: 20,
-                        child: Text("Hi"),
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text("Student App"),
-                          const Text("vivek.yadva@sapple.co.in")
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
-              )),
-            ),
-            SizedBox(
-              height: 580,
+            DrawerHeader(
+                child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    const CircleAvatar(
+                      maxRadius: 20,
+                      child: Text("Hi"),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text("Student App"),
+                        const Text("vivek.yadva@sapple.co.in")
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            )),
+            Flexible(
               child: ListView.builder(
                   itemCount: drawerList.length,
                   itemBuilder: (context, index) {
@@ -113,13 +110,17 @@ class DashBordController extends GetxController {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          if (index > 0)
+                            const Divider(
+                              thickness: 1,
+                            ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Text(drawerList[index]),
+                            child: Text(
+                              drawerList[index],
+                              style: TextStyle(fontSize: FontSize.s18),
+                            ),
                           ),
-                          const Divider(
-                            thickness: 1,
-                          )
                         ],
                       ),
                     );
