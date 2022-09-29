@@ -28,7 +28,7 @@ class _DashBoardState extends State<DashBoard> {
         }
       case 1:
         {
-          Get.to(const ClassTimeTable());
+          // Get.to(const ClassTimeTable());
           break;
         }
       case 2:
