@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:schoolmanagement/controller/profile_controller.dart';
@@ -250,7 +252,8 @@ class _StudentAccountState extends State<StudentAccount> {
                       if (accountKey.currentState!.validate()) {}
                     },
                     child: const Text("Submit")),
-              )
+              ),
+              Text("hi how r u"),
             ],
           ),
         ),
