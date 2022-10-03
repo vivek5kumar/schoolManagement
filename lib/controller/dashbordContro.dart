@@ -82,7 +82,7 @@ class DashBordController extends GetxController {
             DrawerHeader(
                 child: Padding(
               padding: const EdgeInsets.symmetric(vertical: AppPadding.p14),
-              child: Column(
+              child: Column( 
                 children: [
                   // Container(
                   //   decoration: BoxDecoration(
