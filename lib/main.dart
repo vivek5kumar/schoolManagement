@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:schoolmanagement/login/user_login.dart';
+import 'package:schoolmanagement/screens/dashboard/dashboard.dart';
+import 'package:schoolmanagement/screens/profile/student_accountpage.dart';
 import 'package:schoolmanagement/splashScreen.dart';
 
 void main() {
@@ -30,7 +33,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SplashScreen(),
+      routes: {
+        '/': (context) => const SplashScreen(),
+        '/userLogin': (context) => StudentLoginPage(),
+        '/dashBoard': (context) => DashBoard()
+      },
     );
   }
 }

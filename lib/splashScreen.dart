@@ -1,8 +1,9 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:get/get_core/get_core.dart';
-import 'package:get/get_navigation/get_navigation.dart';
-import 'package:schoolmanagement/login/welcome.dart';
+import 'package:get/get.dart';
+import 'package:schoolmanagement/controller/loginController.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -12,10 +13,30 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  final loginCtrl = Get.put(LoginController());
+  late SharedPreferences prefs;
+  bool isLogin = false;
+
+  checkLogin() async {
+    prefs = await SharedPreferences.getInstance();
+    isLogin = prefs.getBool(
+          "isLogin",
+        ) ??
+        false;
+    if (!isLogin) {
+      Timer(Duration(seconds: 3), () => Get.offAllNamed("/userLogin"));
+    } else {
+      loginCtrl.ctrl[0].text = prefs.getString("email").toString();
+      loginCtrl.ctrl[1].text = prefs.getString("password").toString();
+      await loginCtrl.login();
+      Timer(Duration(seconds: 3), () => Get.toNamed("/dashBoard"));
+    }
+  }
+
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 5), () => Get.off(const Welcome()));
+    checkLogin();
   }
 
   @override

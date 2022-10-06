@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:schoolmanagement/controller/dashbordContro.dart';
+import 'package:schoolmanagement/controller/loginController.dart';
 import 'package:schoolmanagement/screens/ClassRoutine/class_time.dart';
 import 'package:schoolmanagement/screens/Exam/exam_list.dart';
 import 'package:schoolmanagement/screens/Library/book_libraryList.dart';
@@ -18,6 +19,7 @@ class DashBoard extends StatefulWidget {
 
 class _DashBoardState extends State<DashBoard> {
   final dashBordCtrl = Get.put(DashBordController());
+  final dashCtrl = Get.put(LoginController());
 
   onTap(int index) {
     switch (index) {
@@ -85,6 +87,14 @@ class _DashBoardState extends State<DashBoard> {
     return Scaffold(
       drawer: dashBordCtrl.openeDrawer(),
       appBar: AppBar(
+        actions: [
+          InkWell(
+              onTap: () => dashCtrl.logout(context),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Icon(Icons.logout),
+              ))
+        ],
         centerTitle: true,
         title: const Text("DashBoard"),
       ),

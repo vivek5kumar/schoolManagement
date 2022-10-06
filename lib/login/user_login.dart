@@ -42,7 +42,7 @@ class _StudentLoginPageState extends State<StudentLoginPage> {
                 // ignore: prefer_const_constructors
                 Center(
                   child: Text(
-                    "${widget.userName.toString()}  Login",
+                    "  Login",
                     style: const TextStyle(
                         color: Colors.black,
                         fontSize: 20,
@@ -105,7 +105,7 @@ class _StudentLoginPageState extends State<StudentLoginPage> {
                             borderRadius: BorderRadius.circular(50))),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {}
-                      Get.to(const DashBoard());
+                      loginCtrl.login();
                     },
                     child: const Text(
                       "LOGIN",
