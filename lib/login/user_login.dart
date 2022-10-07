@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:schoolmanagement/controller/loginController.dart';
 import 'package:schoolmanagement/custom_widgets/colors.dart';
 import 'package:schoolmanagement/custom_widgets/text_formfield.dart';
-import 'package:schoolmanagement/screens/dashboard/dashboard.dart';
 
 class StudentLoginPage extends StatefulWidget {
   String? userName;
@@ -16,6 +15,7 @@ class _StudentLoginPageState extends State<StudentLoginPage> {
   final loginCtrl = Get.put(LoginController());
   bool showPassword = false;
   final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -41,9 +41,9 @@ class _StudentLoginPageState extends State<StudentLoginPage> {
 
                 // ignore: prefer_const_constructors
                 Center(
-                  child: Text(
+                  child: const Text(
                     "  Login",
-                    style: const TextStyle(
+                    style: TextStyle(
                         color: Colors.black,
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
@@ -104,14 +104,19 @@ class _StudentLoginPageState extends State<StudentLoginPage> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50))),
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {}
-                      loginCtrl.login();
+                      if (_formKey.currentState!.validate()) {
+                        loginCtrl.login();
+                      }
                     },
-                    child: const Text(
-                      "LOGIN",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    )),
+                    child: Obx(() => !loginCtrl.isLoading.value
+                        ? const Text(
+                            "LOGIN",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          )
+                        : const CircularProgressIndicator(
+                            color: Colors.blue,
+                          ))),
                 // Padding(
                 //   padding: const EdgeInsets.symmetric(horizontal: 60.0),
                 //   child: Row(

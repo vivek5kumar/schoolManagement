@@ -5,13 +5,20 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginController extends GetxController {
   late SharedPreferences prefs;
-  bool showPasswor = false;
+  RxBool showPasswor = false.obs;
   List<TextEditingController> ctrl = [
     for (int i = 0; i < 10; i++) TextEditingController()
   ];
+  RxBool isLoading = false.obs;
+
+  setLoading(bool val) {
+    isLoading.value = val;
+    update();
+  }
 
   login() async {
     prefs = await SharedPreferences.getInstance();
+    setLoading(true);
     Map _map = {
       "action": "login",
       "email": ctrl[0].text.trim(),
@@ -25,6 +32,8 @@ class LoginController extends GetxController {
         Get.offAllNamed("/dashBoard");
       }
     });
+    setLoading(false);
+    // update();
   }
 
   logout(context) async {
