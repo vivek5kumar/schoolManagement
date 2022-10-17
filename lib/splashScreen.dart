@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:schoolmanagement/controller/loginController.dart';
@@ -24,12 +23,12 @@ class _SplashScreenState extends State<SplashScreen> {
         ) ??
         false;
     if (!isLogin) {
-      Timer(Duration(seconds: 3), () => Get.offAllNamed("/userLogin"));
+      Timer(const Duration(seconds: 3), () => Get.offAllNamed("/userLogin"));
     } else {
       loginCtrl.ctrl[0].text = prefs.getString("email").toString();
       loginCtrl.ctrl[1].text = prefs.getString("password").toString();
       await loginCtrl.login();
-      Timer(Duration(seconds: 3), () => Get.toNamed("/dashBoard"));
+      Timer(const Duration(seconds: 3), () => Get.toNamed("/dashBoard"));
     }
   }
 
