@@ -50,7 +50,7 @@ class _DashBoardState extends State<DashBoard> {
         }
       case 5:
         {
-          Get.to(const NoticeBoard());
+          Get.to(NoticeBoard());
           break;
         }
       case 6:

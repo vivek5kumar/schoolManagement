@@ -29,13 +29,14 @@ class _StudentAccountState extends State<StudentAccount> {
         child: Form(
           key: accountKey,
           child: ListView(
+            // physics: NeverScrollableScrollPhysics(),
             children: [
               Column(
                 children: [
-                  const CircleAvatar(
+                  CircleAvatar(
                     child: Text("Hi"),
                   ),
-                  const Text("Student App"),
+                  Text("Student App"),
                 ],
               ),
               Column(

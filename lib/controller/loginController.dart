@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class LoginController extends GetxController {
   late SharedPreferences prefs;
   RxBool showPasswor = false.obs;
+  var datetime = DateTime.now();
   List<TextEditingController> ctrl = [
     for (int i = 0; i < 10; i++) TextEditingController()
   ];
