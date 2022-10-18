@@ -25,7 +25,7 @@ class _DashBoardState extends State<DashBoard> {
     switch (index) {
       case 0:
         {
-          Get.to(StudentAccount());
+          Get.to(const StudentAccount());
           break;
         }
       case 1:
@@ -90,8 +90,8 @@ class _DashBoardState extends State<DashBoard> {
         actions: [
           InkWell(
               onTap: () => dashCtrl.logout(context),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
+              child: const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Icon(Icons.logout),
               ))
         ],
