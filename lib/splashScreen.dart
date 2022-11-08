@@ -1,7 +1,10 @@
 import 'dart:async';
+
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:schoolmanagement/controller/loginController.dart';
+import 'package:schoolmanagement/no_internate.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,6 +18,39 @@ class _SplashScreenState extends State<SplashScreen> {
   final loginCtrl = Get.put(LoginController());
   late SharedPreferences prefs;
   bool isLogin = false;
+
+  final Connectivity _connectivity = Connectivity();
+  late StreamSubscription<ConnectivityResult> _connectivitySubscription;
+
+  initConnectivity() async {
+    ConnectivityResult? result;
+    try {
+      result = await _connectivity.checkConnectivity();
+    } catch (e) {
+      print(e.toString());
+    }
+    return _updateConnectionStatus(result!);
+  }
+
+  _updateConnectionStatus(ConnectivityResult result) {
+    try {
+      if (result == ConnectivityResult.wifi ||
+          result == ConnectivityResult.mobile) {
+        Get.snackbar(
+          "connected",
+          "Internate Connected !",
+          backgroundColor: Colors.green,
+        );
+        checkLogin();
+      } else {
+        Get.snackbar("Disconnect", "No Internate connection",
+            backgroundColor: Colors.grey);
+        Get.to(const InternateChecking());
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 
   checkLogin() async {
     prefs = await SharedPreferences.getInstance();
@@ -35,7 +71,9 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    checkLogin();
+    initConnectivity();
+    _connectivitySubscription =
+        _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
   }
 
   @override

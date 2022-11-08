@@ -15,7 +15,7 @@ class _StudentDetailsState extends State<StudentDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: studentDetailsCtrl.openeDrawer(),
+      // drawer: studentDetailsCtrl.openeDrawer(),
       appBar: AppBar(
         automaticallyImplyLeading: true,
         centerTitle: true,

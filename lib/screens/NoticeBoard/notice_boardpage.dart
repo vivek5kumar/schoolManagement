@@ -17,7 +17,6 @@ class _NoticeBoardState extends State<NoticeBoard> {
     "vaibhav",
   ];
 
-  int initialPage = 0;
   int index = 0;
 
   final _controller = PageController();

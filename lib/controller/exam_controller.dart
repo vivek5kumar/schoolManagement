@@ -1,13 +1,14 @@
 import 'package:get/get.dart';
 
 class ExamController extends GetxController {
-  List cityName = [
+  List userName = [
     "vivek",
     "rohan",
     "vaibhav",
     "garun",
     "mantosh",
     "akash",
-    "anand"
+    "anand",
+    "aman"
   ];
 }

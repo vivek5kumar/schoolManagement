@@ -57,7 +57,7 @@ class _ExamResultState extends State<ExamResult> {
                       child: Text(
                     "Select Exam",
                     style: TextStyle(
-                        color: kPrimaryLightColor,
+                        color: kPrimaryColor,
                         fontWeight: FontWeightManager.bold),
                   )),
                 ),

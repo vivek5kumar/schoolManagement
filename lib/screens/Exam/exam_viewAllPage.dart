@@ -13,7 +13,7 @@ class AllDetails extends StatelessWidget {
         title: const Text("Details"),
       ),
       body: ListView.builder(
-          itemCount: examDetailsCtrl.cityName.length,
+          itemCount: examDetailsCtrl.userName.length,
           itemBuilder: (context, index) {
             return SingleChildScrollView(
               child: Column(
@@ -22,10 +22,17 @@ class AllDetails extends StatelessWidget {
                       height: size.height * 0.05,
                       width: size.width * 0.7,
                       decoration: BoxDecoration(
+                          color: index % 2 == 0
+                              ? Colors.red
+                              : index % 3 == 0
+                                  ? Colors.yellow
+                                  : index % 5 == 0
+                                      ? Colors.white
+                                      : Colors.blue,
                           border: Border.all(),
                           borderRadius: BorderRadius.circular(10.0)),
                       child:
-                          Center(child: Text(examDetailsCtrl.cityName[index]))),
+                          Center(child: Text(examDetailsCtrl.userName[index]))),
                   const SizedBox(
                     height: 10,
                   )
