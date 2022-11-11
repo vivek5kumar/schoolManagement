@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:schoolmanagement/controller/loginController.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../drawerListScreen/parentsListPage.dart';
@@ -7,6 +10,7 @@ import '../drawerListScreen/studentListPage.dart';
 import '../drawerListScreen/teacherListPage.dart';
 
 class DrawerListController extends GetxController {
+  final logCtrl = Get.put(LoginController());
   // bool isLogin = false;
   bool isLogin = false; // for check is user login or not
   late SharedPreferences prefs;
@@ -62,7 +66,38 @@ class DrawerListController extends GetxController {
     } else if (i == 5) {
       // Get.to(());
     } else if (i == 6) {
-      // Get.to(());
+      showLogDialog(
+        BuildContext context,
+      ) {
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                content: const Text(
+                  'Are you sure you want to log out!',
+                ),
+                actions: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                        child: const Text('Yes'),
+                        onPressed: () {
+                          logCtrl.logout(context);
+                        },
+                      ),
+                      ElevatedButton(
+                        child: const Text('No'),
+                        onPressed: () {
+                          Get.back();
+                        },
+                      )
+                    ],
+                  ),
+                ],
+              );
+            });
+      }
     }
   }
 }

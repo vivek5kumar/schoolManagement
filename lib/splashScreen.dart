@@ -36,15 +36,15 @@ class _SplashScreenState extends State<SplashScreen> {
     try {
       if (result == ConnectivityResult.wifi ||
           result == ConnectivityResult.mobile) {
+        checkLogin();
         Get.snackbar(
           "connected",
           "Internate Connected !",
           backgroundColor: Colors.green,
         );
-        checkLogin();
       } else {
         Get.snackbar("Disconnect", "No Internate connection",
-            backgroundColor: Colors.grey);
+            colorText: Colors.red, backgroundColor: Colors.white);
         Get.to(const InternateChecking());
       }
     } catch (e) {

@@ -16,7 +16,7 @@ class _ClassTimeTableState extends State<ClassTimeTable> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        actions: [Icon(Icons.notifications)],
+        actions: [const Icon(Icons.notifications)],
         title: const Text("Class Timetable"),
         centerTitle: true,
       ),
@@ -48,7 +48,7 @@ class _ClassTimeTableState extends State<ClassTimeTable> {
                     onTap: () {},
                     child: const Icon(
                       Icons.arrow_forward_ios,
-                      size: FontSize.s20,
+                      size: 35,
                       color: Colors.grey,
                     )),
               ],
@@ -64,8 +64,11 @@ class _ClassTimeTableState extends State<ClassTimeTable> {
                   itemCount: weekName.length,
                   itemBuilder: ((context, index) {
                     return Padding(
-                      padding: const EdgeInsets.all(AppPadding.p8),
-                      child: Text(weekName[index]),
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Text(weekName[index]),
+                      ),
                     );
                   })),
             ),

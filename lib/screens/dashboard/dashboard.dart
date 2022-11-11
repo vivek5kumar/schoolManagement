@@ -213,24 +213,7 @@ class _DashBoardState extends State<DashBoard> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     CircleAvatar(
-                        backgroundColor: index == 0
-                            ? Colors.lightBlue[200]
-                            : index == 1
-                                ? Colors.red[400]
-                                : index == 2
-                                    ? Colors.yellow[500]
-                                    : index == 3
-                                        ? const Color.fromARGB(
-                                            255, 47, 142, 219)
-                                        : index == 4
-                                            ? Colors.pink
-                                            : index == 6
-                                                ? kLightPinkColor
-                                                : index == 10
-                                                    ? kDarkBlueColor
-                                                    : index == 9
-                                                        ? kLightGreyColor
-                                                        : Colors.blueGrey,
+                        backgroundColor: dashBordCtrl.colorList[index],
                         maxRadius: 40,
                         child: GridTile(
                             child: Icon(

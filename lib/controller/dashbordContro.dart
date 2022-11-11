@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:schoolmanagement/custom_widgets/colors.dart';
 
-import 'package:schoolmanagement/drawerListScreen/teacherListPage.dart';
 import 'package:schoolmanagement/screens/ClassRoutine/class_time.dart';
 
 import 'package:schoolmanagement/screens/Exam/exam_list.dart';
@@ -42,6 +42,20 @@ class DashBordController extends GetxController {
     Icons.account_balance_outlined,
     Icons.credit_card_outlined,
     Icons.library_books_outlined,
+  ];
+
+  var colorList = [
+    kLightBlueColor,
+    kRedColor,
+    kLightYellowColor,
+    kLightBlueColor,
+    kLightPinkColor,
+    kGreyColor,
+    kGreyColor,
+    kLightColor,
+    kGreyColor,
+    kDarkBlueColor,
+    kGreyBleckColor
   ];
 
   onTap(int i) {
