@@ -14,6 +14,7 @@ class ExamList extends StatefulWidget {
 class _ExamListState extends State<ExamList> {
   final examCtrl = Get.put(ExamController());
   late TextEditingController ctrl;
+
   // List<bool> value = [false, false, false, false];
   bool _value = false;
   bool check = false;
@@ -39,7 +40,7 @@ class _ExamListState extends State<ExamList> {
     ctrl.addListener(() {
       isEnabled = ctrl.text.isNotEmpty;
       setState(() {
-        this.isEnabled = isEnabled;
+        isEnabled = isEnabled;
       });
     });
   }
@@ -84,7 +85,7 @@ class _ExamListState extends State<ExamList> {
             for (int i = 0; i < 2; i++)
               SizedBox(
                   height: 60,
-                  width: 200,
+                  width: MediaQuery.of(context).size.width * 0.5,
                   child:
                       Card(child: Center(child: Text(examCtrl.userName[i])))),
             const Divider(
@@ -95,9 +96,9 @@ class _ExamListState extends State<ExamList> {
                 const Text("follow the instruction"),
                 Checkbox(
                     value: _value,
-                    onChanged: (value) {
+                    onChanged: (val) {
                       setState(() {
-                        _value = value!;
+                        _value = val!;
                       });
                     })
               ],
@@ -146,7 +147,17 @@ class _ExamListState extends State<ExamList> {
                         ctrl.clear();
                       }
                     : null,
-                child: Text("submit"))
+                child: Text("submit")),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextFormField(
+                readOnly: true,
+                controller: examCtrl.dateCtrl,
+                onTap: () => examCtrl.showDate(context),
+                decoration: InputDecoration(
+                    hintText: "Select Time", border: OutlineInputBorder()),
+              ),
+            ),
           ],
         ),
       ),

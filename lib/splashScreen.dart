@@ -37,11 +37,6 @@ class _SplashScreenState extends State<SplashScreen> {
       if (result == ConnectivityResult.wifi ||
           result == ConnectivityResult.mobile) {
         checkLogin();
-        Get.snackbar(
-          "connected",
-          "Internate Connected !",
-          backgroundColor: Colors.green,
-        );
       } else {
         Get.snackbar("Disconnect", "No Internate connection",
             colorText: Colors.red, backgroundColor: Colors.white);
@@ -59,7 +54,7 @@ class _SplashScreenState extends State<SplashScreen> {
         ) ??
         false;
     if (!isLogin) {
-      Timer(const Duration(seconds: 3), () => Get.offAllNamed("/userLogin"));
+      Timer(const Duration(seconds: 3), () => Get.offAllNamed("/dashBoard"));
     } else {
       loginCtrl.ctrl[0].text = prefs.getString("email").toString();
       loginCtrl.ctrl[1].text = prefs.getString("password").toString();

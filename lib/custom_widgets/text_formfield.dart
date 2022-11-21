@@ -18,6 +18,7 @@ class RoundedTextField extends StatelessWidget {
   AutovalidateMode? validateMode;
   var validator;
   TextEditingController? controller;
+
   Color? color;
   RoundedTextField(
       {this.hint,

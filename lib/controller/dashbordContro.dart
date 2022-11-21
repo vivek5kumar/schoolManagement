@@ -4,7 +4,6 @@ import 'package:schoolmanagement/custom_widgets/colors.dart';
 
 import 'package:schoolmanagement/screens/ClassRoutine/class_time.dart';
 
-import 'package:schoolmanagement/screens/Exam/exam_list.dart';
 import 'package:schoolmanagement/screens/Fee%20Payment/fee_payment.dart';
 import 'package:schoolmanagement/screens/Holiday/holiday.dart';
 import 'package:schoolmanagement/screens/Homework/homework.dart';
@@ -12,6 +11,7 @@ import 'package:schoolmanagement/screens/Library/book_libraryList.dart';
 import 'package:schoolmanagement/screens/NoticeBoard/notice_boardpage.dart';
 import 'package:schoolmanagement/profile/student_accountpage.dart';
 
+import '../screens/Exam/exam_list.dart';
 import '../screens/Result/result_exampage.dart';
 import '../screens/message/messagePage.dart';
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:schoolmanagement/controller/dashbordContro.dart';
 import 'package:schoolmanagement/controller/drawerController.dart';
@@ -6,8 +7,8 @@ import 'package:schoolmanagement/controller/loginController.dart';
 import 'package:schoolmanagement/custom_widgets/colors.dart';
 
 import 'package:schoolmanagement/login/user_login.dart';
-
 import '../../custom_widgets/custom_sizes.dart';
+import '../../login/create_account.dart';
 
 class DashBoard extends StatefulWidget {
   const DashBoard({
@@ -79,28 +80,31 @@ class _DashBoardState extends State<DashBoard> {
                         )
                       ],
                     ),
-                const SizedBox(
-                  height: 20,
-                ),
+                SizedBox(height: 25),
                 Visibility(
                   visible: loginCtrl.isLogin != true,
                   child: Column(
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(14.0),
-                        child: Card(
-                          color: Colors.red,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12)),
-                          child: const Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 18.0, vertical: 10),
-                            child: Text(
-                              "Create Your Own SoupFinder account",
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
+                        child: InkWell(
+                          onTap: () {
+                            Get.to(const CreateAccount());
+                          },
+                          child: Card(
+                            color: Colors.red,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12)),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 18.0, vertical: 10),
+                              child: Text(
+                                "Create Your Own SoupFinder account",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),
@@ -162,7 +166,7 @@ class _DashBoardState extends State<DashBoard> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    // final size = MediaQuery.of(context).size;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       drawer: openeDrawer(),

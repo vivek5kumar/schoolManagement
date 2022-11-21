@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 class Reordarable extends StatelessWidget {
   Reordarable({super.key});
   // final reordCtrl = Get.to(ExamController());
-  List<String> cityName = [
+  List<String> userName = [
     "vivek",
     "rohan",
     "vaibhav",
@@ -20,8 +20,8 @@ class Reordarable extends StatelessWidget {
     if (newIndex > oldIndex) {
       newIndex = -1;
     }
-    final items = cityName.removeAt(oldIndex);
-    cityName.insert(newIndex, items);
+    final items = userName.removeAt(oldIndex);
+    userName.insert(newIndex, items);
   }
 
   @override
@@ -34,12 +34,11 @@ class Reordarable extends StatelessWidget {
         body: Obx(
           () => ReorderableListView(
               // ignore: sort_child_properties_last
-              children: cityName
+              children: userName
                   .map((e) => Container(
                         margin:
                             const EdgeInsets.only(left: 16, right: 16, top: 8),
                         padding: const EdgeInsets.all(16),
-                        key: ValueKey(e),
                         decoration: BoxDecoration(
                             color: Colors.blueAccent,
                             borderRadius: BorderRadius.circular(8)),

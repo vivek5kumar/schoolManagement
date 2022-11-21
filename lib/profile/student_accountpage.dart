@@ -20,7 +20,7 @@ class _StudentAccountState extends State<StudentAccount> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
       // backgroundColor: kPrimaryColor,
       appBar: AppBar(
         title: const Text("Account"),
@@ -124,13 +124,13 @@ class _StudentAccountState extends State<StudentAccount> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
+                            Text(
                               "Parents Name",
                               style: TextStyle(
                                   fontSize: FontSize.s16,
                                   fontWeight: FontWeightManager.bold),
                             ),
-                            const Text("Father"),
+                            Text("Father"),
                           ],
                         ),
                       ),
@@ -169,7 +169,7 @@ class _StudentAccountState extends State<StudentAccount> {
                 AccountTextField(
                   validateMode: AutovalidateMode.onUserInteraction,
                   controller: accountCtrl.controller[2],
-                  hint: "Conform Password",
+                  hint: "Confirm Password",
                   validator: (val) {
                     if (val.isEmpty) {
                       return "Required";
@@ -268,6 +268,7 @@ class _StudentAccountState extends State<StudentAccount> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20))),
                       onPressed: () {
+                        FocusManager.instance.primaryFocus?.unfocus();
                         if (accountKey.currentState!.validate()) {}
                       },
                       child: const Text("Submit")),

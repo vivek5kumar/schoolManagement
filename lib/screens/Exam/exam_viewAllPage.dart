@@ -12,6 +12,7 @@ class AllDetails extends StatefulWidget {
 class _AllDetailsState extends State<AllDetails> {
   final examDetailsCtrl = Get.put(ExamController());
   var value = [for (int i = 0; i <= 5; i++) false];
+  List<bool> buttonHide = [for (int i = 0; i < 8; i++) false];
   var colorsList = [];
 
   @override
@@ -29,8 +30,9 @@ class _AllDetailsState extends State<AllDetails> {
                 children: [
                   InkWell(
                     onTap: () {
+                      colorsList.clear();
                       colorsList.add(index);
-                      setState((  ) {});
+                      setState(() {});
                     },
                     child: Container(
                         height: size.height * 0.05,
@@ -42,7 +44,16 @@ class _AllDetailsState extends State<AllDetails> {
                             border: Border.all(),
                             borderRadius: BorderRadius.circular(10.0)),
                         child: Center(
-                            child: Text(examDetailsCtrl.userName[index]))),
+                            child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              examDetailsCtrl.userName[index],
+                            ),
+                            ElevatedButton(
+                                onPressed: () {}, child: Text("Hide"))
+                          ],
+                        ))),
                   ),
                   const SizedBox(
                     height: 10,

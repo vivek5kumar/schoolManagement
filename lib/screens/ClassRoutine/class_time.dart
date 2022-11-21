@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:schoolmanagement/custom_widgets/custom_sizes.dart';
+import 'package:get/get.dart';
+import 'package:schoolmanagement/controller/classController.dart';
 
 class ClassTimeTable extends StatefulWidget {
   const ClassTimeTable({super.key});
@@ -9,14 +10,29 @@ class ClassTimeTable extends StatefulWidget {
 }
 
 class _ClassTimeTableState extends State<ClassTimeTable> {
-  List<String> weekName = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  final classCtrl = Get.put(ClassController());
+
+  // int index = 0;
+  // weekIncrease(isIncrease) {
+  //   if (isIncrease ? (index < 6) : (index > 0)) {
+  //     setState(() {
+  //       isIncrease ? index++ : index--;
+  //     });
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        actions: [const Icon(Icons.notifications)],
+        actions: const [
+          Padding(
+            padding: EdgeInsets.all(15.0),
+            child: Icon(Icons.notifications),
+          ),
+        ],
         title: const Text("Class Timetable"),
         centerTitle: true,
       ),
@@ -33,25 +49,40 @@ class _ClassTimeTableState extends State<ClassTimeTable> {
                 ))),
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                InkWell(
-                    onTap: () {},
-                    child: const Icon(
-                      Icons.arrow_back_ios,
-                      size: 35,
-                      color: Colors.grey,
-                    )),
-                const Text("STD:Class 1-No Section"),
-                InkWell(
-                    onTap: () {},
-                    child: const Icon(
-                      Icons.arrow_forward_ios,
-                      size: 35,
-                      color: Colors.grey,
-                    )),
-              ],
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  InkWell(
+                      onTap: () {
+                        setState(() {
+                          classCtrl.weekFun(false);
+                        });
+                      },
+                      child: const Icon(
+                        Icons.arrow_back_ios,
+                        size: 35,
+                        color: Colors.blue,
+                      )),
+                  const Text(
+                    "STD:Class 1-No Section",
+                    style: TextStyle(fontSize: 17),
+                  ),
+                  InkWell(
+                      onTap: () {
+                        setState(() {
+                          classCtrl.weekFun(true);
+                        });
+                      },
+                      child: const Icon(
+                        Icons.arrow_forward_ios,
+                        size: 35,
+                        color: Colors.blue,
+                      )),
+                ],
+              ),
             ),
             const Divider(
               thickness: 1,
@@ -61,14 +92,29 @@ class _ClassTimeTableState extends State<ClassTimeTable> {
               child: ListView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   scrollDirection: Axis.horizontal,
-                  itemCount: weekName.length,
-                  itemBuilder: ((context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 15),
-                        child: Text(weekName[index]),
-                      ),
+                  itemCount: classCtrl.weekName.length,
+                  shrinkWrap: true,
+                  itemBuilder: ((context, i) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                              height: 40,
+                              width: 40,
+                              decoration: BoxDecoration(
+                                  border: Border.all(),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: classCtrl.index == i
+                                      ? Colors.blue[200]
+                                      : null),
+                              child: Center(
+                                  child: Text(
+                                classCtrl.weekName[i],
+                              ))),
+                        ),
+                      ],
                     );
                   })),
             ),
