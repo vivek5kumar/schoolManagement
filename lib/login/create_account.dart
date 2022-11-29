@@ -18,6 +18,7 @@ class _CreateAccountState extends State<CreateAccount> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // resizeToAvoidBottomInset: true,
       appBar: AppBar(
         title: const Text("Sign-Up"),
         centerTitle: true,
@@ -36,19 +37,19 @@ class _CreateAccountState extends State<CreateAccount> {
           key: signCtrl.signUpKey,
           child: ListView(
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20.0),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 20.0),
                 child: CircleAvatar(
                     backgroundImage: AssetImage("assets/images/profile.jpg"),
-                    maxRadius: ScreenUtil().radius(55.r)),
+                    maxRadius: 55),
               ),
-              SizedBox(
-                height: 30.h,
+              const SizedBox(
+                height: 30,
               ),
               ExpansionTile(
-                title: Text(
+                title: const Text(
                   "Personal Information",
-                  style: TextStyle(fontSize: 18.sp),
+                  style: TextStyle(fontSize: 18),
                 ),
                 children: <Widget>[
                   Focus(
@@ -125,9 +126,9 @@ class _CreateAccountState extends State<CreateAccount> {
                 ],
               ),
               ExpansionTile(
-                title: Text(
+                title: const Text(
                   "Contact Information",
-                  style: TextStyle(fontSize: 18.sp),
+                  style: TextStyle(fontSize: 18),
                 ),
                 children: [
                   Focus(
@@ -212,7 +213,7 @@ class _CreateAccountState extends State<CreateAccount> {
 
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)),
-                      minimumSize: Size(100, 40),
+                      minimumSize: const Size(100, 40),
                     ),
                     onPressed: () {
                       FocusManager.instance.primaryFocus?.unfocus();

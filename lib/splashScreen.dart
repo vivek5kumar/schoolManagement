@@ -4,7 +4,9 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:schoolmanagement/controller/loginController.dart';
+import 'package:schoolmanagement/login/user_login.dart';
 import 'package:schoolmanagement/no_internate.dart';
+import 'package:schoolmanagement/screens/dashboard/dashboard.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -19,33 +21,33 @@ class _SplashScreenState extends State<SplashScreen> {
   late SharedPreferences prefs;
   bool isLogin = false;
 
-  final Connectivity _connectivity = Connectivity();
-  late StreamSubscription<ConnectivityResult> _connectivitySubscription;
+  // final Connectivity _connectivity = Connectivity();
+  // late StreamSubscription<ConnectivityResult> _connectivitySubscription;
 
-  initConnectivity() async {
-    ConnectivityResult? result;
-    try {
-      result = await _connectivity.checkConnectivity();
-    } catch (e) {
-      print(e.toString());
-    }
-    return _updateConnectionStatus(result!);
-  }
+  // initConnectivity() async {
+  //   ConnectivityResult? result;
+  //   try {
+  //     result = await _connectivity.checkConnectivity();
+  //   } catch (e) {
+  //     print(e.toString());
+  //   }
+  //   return _updateConnectionStatus(result!);
+  // }
 
-  _updateConnectionStatus(ConnectivityResult result) {
-    try {
-      if (result == ConnectivityResult.wifi ||
-          result == ConnectivityResult.mobile) {
-        checkLogin();
-      } else {
-        Get.snackbar("Disconnect", "No Internate connection",
-            colorText: Colors.red, backgroundColor: Colors.white);
-        Get.to(const InternateChecking());
-      }
-    } catch (e) {
-      print(e.toString());
-    }
-  }
+  // _updateConnectionStatus(ConnectivityResult result) {
+  //   try {
+  //     if (result == ConnectivityResult.wifi ||
+  //         result == ConnectivityResult.mobile) {
+  //       checkLogin();
+  //     } else {
+  //       Get.snackbar("Disconnect", "No Internate connection",
+  //           colorText: Colors.red, backgroundColor: Colors.white);
+  //       Get.to(const InternateChecking());
+  //     }
+  //   } catch (e) {
+  //     print(e.toString());
+  //   }
+  // }
 
   checkLogin() async {
     prefs = await SharedPreferences.getInstance();
@@ -54,21 +56,22 @@ class _SplashScreenState extends State<SplashScreen> {
         ) ??
         false;
     if (!isLogin) {
-      Timer(const Duration(seconds: 3), () => Get.offAllNamed("/dashBoard"));
+      Get.off(StudentLoginPage());
     } else {
       loginCtrl.ctrl[0].text = prefs.getString("email").toString();
       loginCtrl.ctrl[1].text = prefs.getString("password").toString();
       await loginCtrl.login();
-      Timer(const Duration(seconds: 3), () => Get.toNamed("/dashBoard"));
+      Get.off(DashBoard());
     }
   }
 
   @override
   void initState() {
     super.initState();
-    initConnectivity();
-    _connectivitySubscription =
-        _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
+    // initConnectivity();
+    // _connectivitySubscription =
+    //     _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
+    checkLogin();
   }
 
   @override

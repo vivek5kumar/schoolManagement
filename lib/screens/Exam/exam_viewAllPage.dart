@@ -40,7 +40,7 @@ class _AllDetailsState extends State<AllDetails> {
                         decoration: BoxDecoration(
                             color: colorsList.contains(index)
                                 ? Colors.blue[100]
-                                : Colors.red,
+                                : null,
                             border: Border.all(),
                             borderRadius: BorderRadius.circular(10.0)),
                         child: Center(
@@ -50,8 +50,6 @@ class _AllDetailsState extends State<AllDetails> {
                             Text(
                               examDetailsCtrl.userName[index],
                             ),
-                            ElevatedButton(
-                                onPressed: () {}, child: Text("Hide"))
                           ],
                         ))),
                   ),

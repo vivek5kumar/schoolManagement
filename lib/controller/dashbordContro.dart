@@ -66,7 +66,7 @@ class DashBordController extends GetxController {
     } else if (i == 2) {
       Get.to(const ExamList());
     } else if (i == 3) {
-      Get.to(const MessageInbox());
+      Get.to(MessageInbox());
     } else if (i == 4) {
       Get.to(const ExamResult());
     } else if (i == 5) {
@@ -74,11 +74,11 @@ class DashBordController extends GetxController {
     } else if (i == 6) {
       Get.to(NoticeBoard());
     } else if (i == 7) {
-      Get.to(const HolidaysPage());
+      Get.to(const HolidayCalender());
     } else if (i == 8) {
-      Get.to(const HomeworkPage());
+      Get.to(HomeworkPage());
     } else if (i == 9) {
-      Get.to(const FeePaymentPage());
+      Get.to(FeePaymentPage());
     } else if (i == 10) {
       Get.to(BookLibrary());
     }

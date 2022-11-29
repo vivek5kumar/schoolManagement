@@ -37,7 +37,7 @@ class _ClassTimeTableState extends State<ClassTimeTable> {
         centerTitle: true,
       ),
       body: Container(
-        height: MediaQuery.of(context).size.height,
+        // height: MediaQuery.of(context).size.height,
         decoration: const BoxDecoration(
             image: DecorationImage(
                 alignment: Alignment.bottomCenter,

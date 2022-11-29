@@ -1,6 +1,3 @@
-import 'dart:developer';
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:schoolmanagement/controller/loginController.dart';
@@ -51,7 +48,7 @@ class DrawerListController extends GetxController {
     Icons.logout
   ];
 
-  drawerFun(int i) {
+  drawerFun(i, context) {
     if (i == 0) {
       Get.back();
     } else if (i == 1) {
@@ -67,38 +64,7 @@ class DrawerListController extends GetxController {
     } else if (i == 5) {
       // Get.to(());
     } else if (i == 6) {
-      showLogDialog(
-        BuildContext context,
-      ) {
-        showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return AlertDialog(
-                content: const Text(
-                  'Are you sure you want to log out!',
-                ),
-                actions: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton(
-                        child: const Text('Yes'),
-                        onPressed: () {
-                          logCtrl.logout(context);
-                        },
-                      ),
-                      ElevatedButton(
-                        child: const Text('No'),
-                        onPressed: () {
-                          Get.back();
-                        },
-                      )
-                    ],
-                  ),
-                ],
-              );
-            });
-      }
+      logCtrl.showLogDialog(context);
     }
   }
 }

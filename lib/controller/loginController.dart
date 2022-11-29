@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:schoolmanagement/Utils/auth.manager.dart';
@@ -19,6 +20,11 @@ class LoginController extends GetxController {
     update();
   }
 
+  loginClear() {
+    ctrl[0].clear();
+    ctrl[1].clear();
+  }
+
   login() async {
     prefs = await SharedPreferences.getInstance();
     setLoading(true);
@@ -33,8 +39,8 @@ class LoginController extends GetxController {
         prefs.setString("email", ctrl[0].text);
         prefs.setString("password", ctrl[1].text);
         isLogin = prefs.getBool("isLogin")!;
-        // ignore: prefer_const_constructors
-        Get.offAll(DashBoard());
+        Get.off(const DashBoard());
+        // loginClear();
       } else {
         Get.snackbar("Error", "Check your username and password!",
             backgroundColor: Colors.red, colorText: Colors.white);
@@ -64,15 +70,15 @@ class LoginController extends GetxController {
             ),
             actions: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  ElevatedButton(
+                  TextButton(
                     child: const Text('Yes'),
                     onPressed: () {
                       logout(context);
                     },
                   ),
-                  ElevatedButton(
+                  TextButton(
                     child: const Text('No'),
                     onPressed: () {
                       Get.back();
