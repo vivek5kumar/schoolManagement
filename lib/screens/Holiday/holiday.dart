@@ -20,32 +20,45 @@ class _HolidayCalenderState extends State<HolidayCalender> {
           endTime: DateTime(DateTime.now().year, DateTime.now().month,
               DateTime.now().day, 12, 0),
           description: "special event"),
+    ],
+    DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 2):
+        [
       CleanCalendarEvent("Event B",
           startTime: DateTime(DateTime.now().year, DateTime.now().month,
-              DateTime.now().day + 2, 10, 0),
+              DateTime.now().day + 2, 13, 0),
           endTime: DateTime(DateTime.now().year, DateTime.now().month,
-              DateTime.now().day + 2, 12, 0),
-          description: "special event C "),
-      CleanCalendarEvent("Event B",
+              DateTime.now().day + 2, 15, 30),
+          description: "special event"),
+      CleanCalendarEvent("Event C",
           startTime: DateTime(DateTime.now().year, DateTime.now().month,
-              DateTime.now().day + 2, 14, 30),
+              DateTime.now().day + 2, 18, 0),
           endTime: DateTime(DateTime.now().year, DateTime.now().month,
-              DateTime.now().day + 2, 17, 0),
-          description: "special event B"),
+              DateTime.now().day + 2, 19, 30),
+          description: "special event"),
+    ],
+    DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 3):
+        [
+      CleanCalendarEvent("Birthday Party",
+          color: Colors.green,
+          startTime: DateTime(DateTime.now().year, DateTime.now().month,
+              DateTime.now().day + 3, 20, 0),
+          endTime: DateTime(DateTime.now().year, DateTime.now().month,
+              DateTime.now().day + 3, 23, 0),
+          description: "Invited by Sapple System Pvt.Ltd")
     ]
   };
+
+  @override
+  void initState() {
+    selectedEvent = event[selectedDay] ?? [];
+    super.initState();
+  }
 
   void _handleDate(date) {
     setState(() {
       selectedDay = date;
       selectedEvent = event[selectedDay] ?? [];
     });
-  }
-
-  @override
-  void initState() {
-    selectedEvent = event[selectedDay] ?? [];
-    super.initState();
   }
 
   @override
@@ -66,24 +79,28 @@ class _HolidayCalenderState extends State<HolidayCalender> {
                 image: NetworkImage(
                   'https://registration.iimsambalpuradmissions.in/exphd/images/background.png',
                 ))),
-        child: Calendar(
-          startOnMonday: true,
-          selectedColor: Colors.blue,
-          todayColor: Colors.red,
-          eventColor: Colors.green,
-          bottomBarColor: Colors.deepOrange,
-          onRangeSelected: (range) {
-            print("Select Day ${range.from},${range.to}");
-          },
-          onDateSelected: (date) {
-            return _handleDate(date);
-          },
-          events: event,
-          isExpanded: true,
-          dayOfWeekStyle: const TextStyle(fontSize: 15),
-          weekDays: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-          hideBottomBar: false,
-          hideArrows: false,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Calendar(
+            isExpandable: true,
+            startOnMonday: true,
+            selectedColor: Colors.blue,
+            todayColor: Colors.red,
+            eventColor: Colors.green,
+            bottomBarColor: Colors.deepOrange,
+            onRangeSelected: (range) {
+              print("Select Day ${range.from},${range.to}");
+            },
+            onDateSelected: (date) {
+              return _handleDate(date);
+            },
+            events: event,
+            isExpanded: true,
+            dayOfWeekStyle: const TextStyle(fontSize: 15),
+            weekDays: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+            hideBottomBar: false,
+            hideArrows: false,
+          ),
         ),
       )),
     );

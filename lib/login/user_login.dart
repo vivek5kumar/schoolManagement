@@ -117,18 +117,6 @@ class _StudentLoginPageState extends State<StudentLoginPage> {
                         : const CircularProgressIndicator(
                             color: Colors.blue,
                           ))),
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(horizontal: 60.0),
-                //   child: Row(
-                //     children: [
-                //       const Text(
-                //         "Don't have account?",
-                //         style: TextStyle(color: kPrimaryLightColor),
-                //       ),
-                //       TextButton(onPressed: () {}, child: const Text("Sign Up"))
-                //     ],
-                //   ),
-                // )
               ],
             ),
           ),

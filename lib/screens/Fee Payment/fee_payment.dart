@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:schoolmanagement/custom_widgets/colors.dart';
 
 class FeePaymentPage extends StatefulWidget {
@@ -30,7 +31,7 @@ class _FeePaymentPageState extends State<FeePaymentPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kDarkBlueColor,
+      // backgroundColor: kDarkBlueColor,
       appBar: AppBar(
         title: const Text("Fee Payment"),
         actions: [
@@ -69,9 +70,16 @@ class _FeePaymentPageState extends State<FeePaymentPage> {
             const SizedBox(
               height: 72,
             ),
-            Text(
-              "Scan code:${qrCode}",
-              style: TextStyle(fontSize: 28, color: Colors.white),
+            QrImage(
+              data: 'This QR code has an embedded image as well',
+              version: QrVersions.auto,
+              size: 150,
+              gapless: false,
+              embeddedImage:
+                  const AssetImage('assets/images/my_embedded_image.png'),
+              embeddedImageStyle: QrEmbeddedImageStyle(
+                size: Size(80, 80),
+              ),
             )
           ],
         ),

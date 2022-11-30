@@ -55,7 +55,7 @@ class LoginController extends GetxController {
     prefs.setBool("isLogin", false);
     isLogin = prefs.getBool("isLogin")!;
     Get.offAllNamed("/dashBoard");
-    Get.snackbar("Logout", "You have logged out");
+    Get.snackbar("Logout", "You have logged out", isDismissible: true);
   }
 
   showLogDialog(
