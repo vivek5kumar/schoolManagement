@@ -36,68 +36,117 @@ class _ExamResultState extends State<ExamResult> {
         padding: const EdgeInsets.symmetric(vertical: AppPadding.p8),
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: size.width * 0.4,
-                  height: size.height * 0.05,
-                  decoration: BoxDecoration(
-                      color: Colors.blue[400],
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(
-                          10,
-                        ),
-                        bottomLeft: Radius.circular(
-                          10,
-                        ),
-                      )),
-                  // color: Colors.blue[200],
-                  child: const Center(
-                      child: Text(
-                    "Select Exam",
-                    style: TextStyle(
-                        color: kPrimaryColor,
-                        fontWeight: FontWeightManager.bold),
-                  )),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: AppPadding.p2),
-                  child: Container(
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
                     width: size.width * 0.4,
                     height: size.height * 0.05,
                     decoration: BoxDecoration(
-                        border: Border.all(color: Colors.blue, width: 1),
+                        color: Colors.blue[400],
                         borderRadius: const BorderRadius.only(
-                          topRight: Radius.circular(
+                          topLeft: Radius.circular(
                             10,
                           ),
-                          bottomRight: Radius.circular(
+                          bottomLeft: Radius.circular(
                             10,
                           ),
                         )),
-                    child: DropdownButtonHideUnderline(
-                      child: DropdownButton(
+                    // color: Colors.blue[200],
+                    child: const Center(
+                        child: Text(
+                      "Select Exam",
+                      style: TextStyle(
+                          color: kPrimaryColor,
+                          fontWeight: FontWeightManager.bold),
+                    )),
+                  ),
+                  Flexible(
+                    flex: 7,
+                    child: Padding(
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: AppPadding.p2),
+                      child: DropdownButtonFormField(
+                          validator: (value) {
+                            if (value == "Select") {
+                              return "Select Semester";
+                            }
+                          },
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                            contentPadding: EdgeInsets.all(5),
+                          ),
                           value: resultCtrl.selectExamType,
                           items: resultCtrl.examSemester.map((items) {
                             return DropdownMenuItem(
-                                value: items,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(AppPadding.p8),
-                                  child: Text(items),
-                                ));
+                                value: items, child: Text(items));
                           }).toList(),
                           onChanged: (val) {
-                            setState(() {
-                              resultCtrl.selectExamType = val.toString();
-                            });
+                            resultCtrl.selectExamType = val.toString();
                           }),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
+            const SizedBox(
+              height: 10,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Container(
+                    width: size.width * 0.4,
+                    height: size.height * 0.05,
+                    decoration: BoxDecoration(
+                        color: Colors.blue[400],
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(
+                            10,
+                          ),
+                          bottomLeft: Radius.circular(
+                            10,
+                          ),
+                        )),
+                    // color: Colors.blue[200],
+                    child: const Center(
+                        child: Text(
+                      "Select Book",
+                      style: TextStyle(
+                          color: kPrimaryColor,
+                          fontWeight: FontWeightManager.bold),
+                    )),
+                  ),
+                  Flexible(
+                    flex: 7,
+                    child: Padding(
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: AppPadding.p2),
+                      child: DropdownButtonFormField(
+                          validator: (value) {
+                            return "Select Book";
+                          },
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.all(12),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10))),
+                          value: resultCtrl.selectBook,
+                          items: resultCtrl.semesterBook.map((books) {
+                            return DropdownMenuItem(
+                                value: books, child: Text(books));
+                          }).toList(),
+                          onChanged: (val) {
+                            resultCtrl.selectBook = val.toString();
+                          }),
+                    ),
+                  )
+                ],
+              ),
+            )
           ],
         ),
       ),

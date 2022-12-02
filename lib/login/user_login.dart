@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:schoolmanagement/controller/loginController.dart';
 import 'package:schoolmanagement/custom_widgets/colors.dart';
+import 'package:schoolmanagement/custom_widgets/custom_sizes.dart';
 import 'package:schoolmanagement/custom_widgets/text_formfield.dart';
 
 class StudentLoginPage extends StatefulWidget {
@@ -20,7 +21,7 @@ class _StudentLoginPageState extends State<StudentLoginPage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      // backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       body: Center(
         child: Form(
           key: _formKey,
@@ -97,26 +98,33 @@ class _StudentLoginPageState extends State<StudentLoginPage> {
                 //       style:
                 //           TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
                 //     )),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: kpurpleColor,
-                        fixedSize: const Size(50, 40),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50))),
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        loginCtrl.login();
-                      }
-                    },
-                    child: Obx(() => !loginCtrl.isLoading.value
-                        ? const Text(
-                            "LOGIN",
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          )
-                        : const CircularProgressIndicator(
-                            color: Colors.blue,
-                          ))),
+                const SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: AppPadding.p10),
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          primary: kpurpleColor,
+                          fixedSize: const Size(10, 40),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50))),
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          loginCtrl.login();
+                        }
+                      },
+                      child: Obx(() => !loginCtrl.isLoading.value
+                          ? const Text(
+                              "LOGIN",
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            )
+                          : const CircularProgressIndicator(
+                              color: Colors.blue,
+                            ))),
+                ),
               ],
             ),
           ),

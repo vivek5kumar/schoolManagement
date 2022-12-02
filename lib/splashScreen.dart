@@ -21,33 +21,33 @@ class _SplashScreenState extends State<SplashScreen> {
   late SharedPreferences prefs;
   bool isLogin = false;
 
-  // final Connectivity _connectivity = Connectivity();
-  // late StreamSubscription<ConnectivityResult> _connectivitySubscription;
+  final Connectivity _connectivity = Connectivity();
+  late StreamSubscription<ConnectivityResult> _connectivitySubscription;
 
-  // initConnectivity() async {
-  //   ConnectivityResult? result;
-  //   try {
-  //     result = await _connectivity.checkConnectivity();
-  //   } catch (e) {
-  //     print(e.toString());
-  //   }
-  //   return _updateConnectionStatus(result!);
-  // }
+  initConnectivity() async {
+    ConnectivityResult? result;
+    try {
+      result = await _connectivity.checkConnectivity();
+    } catch (e) {
+      print(e.toString());
+    }
+    return _updateConnectionStatus(result!);
+  }
 
-  // _updateConnectionStatus(ConnectivityResult result) {
-  //   try {
-  //     if (result == ConnectivityResult.wifi ||
-  //         result == ConnectivityResult.mobile) {
-  //       checkLogin();
-  //     } else {
-  //       Get.snackbar("Disconnect", "No Internate connection",
-  //           colorText: Colors.red, backgroundColor: Colors.white);
-  //       Get.to(const InternateChecking());
-  //     }
-  //   } catch (e) {
-  //     print(e.toString());
-  //   }
-  // }
+  _updateConnectionStatus(ConnectivityResult result) {
+    try {
+      if (result == ConnectivityResult.wifi ||
+          result == ConnectivityResult.mobile) {
+        checkLogin();
+      } else {
+        Get.snackbar("Disconnect", "No Internate connection",
+            colorText: Colors.red, backgroundColor: Colors.white);
+        Get.to(const InternateChecking());
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 
   checkLogin() async {
     prefs = await SharedPreferences.getInstance();
@@ -68,10 +68,10 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    // initConnectivity();
-    // _connectivitySubscription =
-    //     _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
-    checkLogin();
+    initConnectivity();
+    _connectivitySubscription =
+        _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
+    // checkLogin();
   }
 
   @override

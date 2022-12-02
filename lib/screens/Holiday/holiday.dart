@@ -44,7 +44,7 @@ class _HolidayCalenderState extends State<HolidayCalender> {
               DateTime.now().day + 3, 20, 0),
           endTime: DateTime(DateTime.now().year, DateTime.now().month,
               DateTime.now().day + 3, 23, 0),
-          description: "Invited by Sapple System Pvt.Ltd")
+          description: "Invited by Sapple System Pvt.Ltd"),
     ]
   };
 

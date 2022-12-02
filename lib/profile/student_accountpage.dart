@@ -265,9 +265,10 @@ class _StudentAccountState extends State<StudentAccount> {
                   ),
                   Padding(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: AppPadding.p20),
+                        const EdgeInsets.symmetric(horizontal: AppPadding.p10),
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
+                            fixedSize: const Size(20, 40),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20))),
                         onPressed: () {

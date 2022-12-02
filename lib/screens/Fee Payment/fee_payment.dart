@@ -53,7 +53,7 @@ class _FeePaymentPageState extends State<FeePaymentPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
+            Text(
               "Scan Result",
               style: TextStyle(
                   fontSize: 16,
@@ -70,17 +70,17 @@ class _FeePaymentPageState extends State<FeePaymentPage> {
             const SizedBox(
               height: 72,
             ),
-            QrImage(
-              data: 'This QR code has an embedded image as well',
-              version: QrVersions.auto,
-              size: 150,
-              gapless: false,
-              embeddedImage:
-                  const AssetImage('assets/images/my_embedded_image.png'),
-              embeddedImageStyle: QrEmbeddedImageStyle(
-                size: Size(80, 80),
-              ),
-            )
+            // QrImage(
+            //   data: 'This QR code has an embedded image as well',
+            //   version: QrVersions.auto,
+            //   size: 150,
+            //   gapless: false,
+            //   embeddedImage:
+            //       const AssetImage('assets/images/my_embedded_image.png'),
+            //   embeddedImageStyle: QrEmbeddedImageStyle(
+            //     size: Size(80, 80),
+            //   ),
+            // )
           ],
         ),
       )),
