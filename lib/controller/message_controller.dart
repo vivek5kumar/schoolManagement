@@ -20,7 +20,7 @@ class MessageController extends GetxController {
     {"id": 1, "name": "Bablu Kumar", "msg": "Hey guy", "date": "12/11/2021"},
   ];
 
-  showMessageDia(context, i) {
+  showMessageDialog(context, i) {
     return showDialog(
         context: context,
         builder: (

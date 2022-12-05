@@ -2,7 +2,7 @@
 import 'package:get/get.dart';
 
 class ExamResultController extends GetxController {
-  String selectExamType = "Select";
+  String selectSem = "Select";
   String selectBook = "Select";
   List examSemester = [
     "Select",
@@ -14,10 +14,14 @@ class ExamResultController extends GetxController {
 
   List semesterBook = [
     "Select",
-    "Mathmatic",
+    "mathematics",
     "Enviromental",
     "Electroni",
     "Electical",
     "Communication"
   ];
+
+  _refresh() {
+    examSemester.clear();
+  }
 }

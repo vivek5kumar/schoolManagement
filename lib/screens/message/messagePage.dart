@@ -27,7 +27,7 @@ class MessageInbox extends StatelessWidget {
               itemBuilder: (context, i) {
                 return InkWell(
                   onTap: () {
-                    msgController.showMessageDia(context, i);
+                    msgController.showMessageDialog(context, i);
                   },
                   child: Card(
                     color: Colors.red[100],

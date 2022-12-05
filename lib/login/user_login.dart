@@ -21,7 +21,7 @@ class _StudentLoginPageState extends State<StudentLoginPage> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.black,
+      // backgroundColor: Colors.black,
       body: Center(
         child: Form(
           key: _formKey,
