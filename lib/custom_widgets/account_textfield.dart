@@ -7,6 +7,8 @@ class AccountTextField extends StatelessWidget {
   String? counterText;
   int? maxLength;
   int? maxLine;
+  bool? security;
+  Widget? suffixIcon;
   TextInputType? input;
   AutovalidateMode? validateMode;
   TextEditingController? controller;
@@ -24,6 +26,8 @@ class AccountTextField extends StatelessWidget {
       this.controller,
       this.validator,
       this.color,
+      this.security,
+      this.suffixIcon,
       super.key});
 
   @override
@@ -32,12 +36,14 @@ class AccountTextField extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: TextFormField(
         maxLength: maxLength,
+        obscureText: security ?? false,
         // style: TextStyle(),
         style: const TextStyle(),
         controller: controller,
         validator: validator,
         autovalidateMode: validateMode,
         decoration: InputDecoration(
+            suffixIcon: suffixIcon,
             counterText: "",
             fillColor: Colors.white,
             filled: true,

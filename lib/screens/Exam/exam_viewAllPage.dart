@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:schoolmanagement/controller/exam_controller.dart';
+import 'package:schoolmanagement/custom_widgets/colors.dart';
 
 class AllDetails extends StatefulWidget {
   AllDetails({super.key});

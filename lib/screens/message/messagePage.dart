@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:schoolmanagement/controller/message_controller.dart';
+import 'package:schoolmanagement/custom_widgets/colors.dart';
 
 class MessageInbox extends StatelessWidget {
   MessageInbox({super.key});
@@ -9,6 +10,7 @@ class MessageInbox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: kDarkBlueColor,
           centerTitle: true,
           title: const Text("Inbox"),
         ),
@@ -30,7 +32,7 @@ class MessageInbox extends StatelessWidget {
                     msgController.showMessageDialog(context, i);
                   },
                   child: Card(
-                    color: Colors.red[100],
+                    color: kDarkBlueColor,
                     shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(20.0),
@@ -38,10 +40,18 @@ class MessageInbox extends StatelessWidget {
                       ),
                     ),
                     child: ListTile(
-                      leading: const Icon(Icons.message),
-                      trailing:
-                          Text(msgController.messageList[i]["date"].toString()),
-                      title: Text(msgController.messageList[i]["name"]),
+                      leading: const Icon(
+                        Icons.message,
+                        color: kWhiteColor,
+                      ),
+                      trailing: Text(
+                        msgController.messageList[i]["date"].toString(),
+                        style: const TextStyle(color: kWhiteColor),
+                      ),
+                      title: Text(
+                        msgController.messageList[i]["name"],
+                        style: const TextStyle(color: kWhiteColor),
+                      ),
                       // subtitle: Text(msgController.messageList[i]["msg"]),
                     ),
                   ),

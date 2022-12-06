@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:schoolmanagement/controller/library_controller.dart';
+import 'package:schoolmanagement/custom_widgets/colors.dart';
 import 'package:schoolmanagement/screens/Library/book_details.dart';
 
 class BookLibrary extends StatefulWidget {
@@ -12,6 +13,7 @@ class BookLibrary extends StatefulWidget {
 
 class _BookLibraryState extends State<BookLibrary> {
   final libraryCtrl = Get.put(LibraryController());
+  final searchCtrl = TextEditingController();
   @override
   void initState() {
     libraryCtrl.foundBook = libraryCtrl.bookList;
@@ -23,6 +25,7 @@ class _BookLibraryState extends State<BookLibrary> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: kDarkBlueColor,
           centerTitle: true,
           title: const Text("Book Library"),
         ),
@@ -46,14 +49,19 @@ class _BookLibraryState extends State<BookLibrary> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 10.0, vertical: 8.0),
                   child: TextField(
+                    controller: searchCtrl,
+                    style: const TextStyle(color: Colors.white),
+                    cursorColor: Colors.white,
                     onChanged: (val) {
                       setState(() {
                         libraryCtrl.searchBook(val);
                       });
                     },
                     decoration: InputDecoration(
-                        hoverColor: Colors.red,
+                        fillColor: kDarkBlueColor,
+                        filled: true,
                         hintText: "search here...",
+                        hintStyle: TextStyle(color: Colors.white),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10))),
                   ),
@@ -61,6 +69,9 @@ class _BookLibraryState extends State<BookLibrary> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Card(
+                    shape: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    color: kDarkBlueColor,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
@@ -70,12 +81,16 @@ class _BookLibraryState extends State<BookLibrary> {
                           const Text(
                             'Books Name',
                             style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.bold),
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
                           ),
                           const Text(
                             "Prices",
                             style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.bold),
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
                           )
                         ],
                       ),
@@ -99,15 +114,84 @@ class _BookLibraryState extends State<BookLibrary> {
                                   ));
                                 },
                                 child: Card(
+                                  shape: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  color: kDarkBlueColor,
                                   elevation: 3,
                                   shadowColor: Colors.red,
                                   child: ListTile(
-                                      title: Text(libraryCtrl.foundBook[index]
-                                          ["bookName"]),
+                                      title: Padding(
+                                        padding: const EdgeInsets.all(5.0),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              libraryCtrl.foundBook[index]
+                                                  ["bookName"],
+                                              style: const TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white),
+                                            ),
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            Row(
+                                              children: [
+                                                libraryCtrl.foundBook[index]
+                                                        .containsKey(
+                                                            "authorName")
+                                                    ? Row(
+                                                        children: [
+                                                          const Text(
+                                                            "Issued by :",
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                color: Colors
+                                                                    .white),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .symmetric(
+                                                                    horizontal:
+                                                                        8.0),
+                                                            child: Text(
+                                                              libraryCtrl.foundBook[
+                                                                      index][
+                                                                  "authorName"],
+                                                              style: const TextStyle(
+                                                                  color: Colors
+                                                                      .white),
+                                                            ),
+                                                          )
+                                                        ],
+                                                      )
+                                                    : const Text(
+                                                        "No author",
+                                                        style: TextStyle(
+                                                            color: Colors.red),
+                                                      ),
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      ),
                                       trailing: libraryCtrl.foundBook[index]
-                                              .containsKey("Price")
-                                          ? Text(
-                                              "Rs: ${libraryCtrl.foundBook[index]["Price"].toString()}/",
+                                                  .containsKey("Price") ||
+                                              libraryCtrl.foundBook[index]
+                                                  .containsKey("date")
+                                          ? Padding(
+                                              padding:
+                                                  const EdgeInsets.all(5.0),
+                                              child: Text(
+                                                "Rs: ${libraryCtrl.foundBook[index]["Price"].toString()}/",
+                                                style: const TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.white),
+                                              ),
                                             )
                                           : Container(
                                               decoration: BoxDecoration(

@@ -24,6 +24,7 @@ class _HolidayCalenderState extends State<HolidayCalender> {
     DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day + 2):
         [
       CleanCalendarEvent("Event B",
+          color: Colors.red,
           startTime: DateTime(DateTime.now().year, DateTime.now().month,
               DateTime.now().day + 2, 13, 0),
           endTime: DateTime(DateTime.now().year, DateTime.now().month,

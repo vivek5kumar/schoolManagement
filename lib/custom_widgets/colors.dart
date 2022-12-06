@@ -11,3 +11,4 @@ const kLightPinkColor = Color(0xFFcc00cc);
 const kLightGreyColor = Color(0xFF993333);
 const kGreyColor = Color(0xFF660066);
 const kGreyBleckColor = Color(0xFF333300);
+const kWhiteColor = Color(0xFFFFFFFF);

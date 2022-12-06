@@ -15,6 +15,8 @@ class StudentAccount extends StatefulWidget {
 class _StudentAccountState extends State<StudentAccount> {
   final accountCtrl = Get.put(ProfileController());
   final accountKey = GlobalKey<FormState>();
+  bool showPass = false;
+  bool showPass1 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -152,6 +154,16 @@ class _StudentAccountState extends State<StudentAccount> {
                   AccountTextField(
                     validateMode: AutovalidateMode.onUserInteraction,
                     controller: accountCtrl.controller[0],
+                    security: !showPass,
+                    suffixIcon: InkWell(
+                      onTap: () {
+                        setState(() {
+                          showPass = !showPass;
+                        });
+                      },
+                      child: Icon(
+                          showPass ? Icons.visibility : Icons.visibility_off),
+                    ),
                     hint: "Current Password",
                     validator: (val) {
                       if (val.isEmpty) {
@@ -162,6 +174,16 @@ class _StudentAccountState extends State<StudentAccount> {
                   AccountTextField(
                     validateMode: AutovalidateMode.onUserInteraction,
                     controller: accountCtrl.controller[1],
+                    security: !showPass1,
+                    suffixIcon: InkWell(
+                      onTap: () {
+                        setState(() {
+                          showPass1 = !showPass1;
+                        });
+                      },
+                      child: Icon(
+                          showPass1 ? Icons.visibility : Icons.visibility_off),
+                    ),
                     hint: "New password",
                     validator: (val) {
                       if (val.isEmpty) {

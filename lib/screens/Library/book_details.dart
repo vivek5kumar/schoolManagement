@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:schoolmanagement/custom_widgets/colors.dart';
 
 class BookDetailsPage extends StatelessWidget {
   String? name;
@@ -7,6 +8,7 @@ class BookDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: kDarkBlueColor,
         appBar: AppBar(
           title: const Text("Book Details"),
           centerTitle: true,

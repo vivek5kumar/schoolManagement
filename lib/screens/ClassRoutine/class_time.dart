@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:schoolmanagement/controller/classController.dart';
+import 'package:schoolmanagement/custom_widgets/colors.dart';
 
 class ClassTimeTable extends StatefulWidget {
   const ClassTimeTable({super.key});
@@ -27,6 +28,7 @@ class _ClassTimeTableState extends State<ClassTimeTable> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        backgroundColor: kDarkBlueColor,
         actions: const [
           Padding(
             padding: EdgeInsets.all(15.0),
@@ -52,7 +54,7 @@ class _ClassTimeTableState extends State<ClassTimeTable> {
             Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
-              child: Row(
+              child:     Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   InkWell(
