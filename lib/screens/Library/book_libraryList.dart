@@ -25,7 +25,7 @@ class _BookLibraryState extends State<BookLibrary> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: kDarkBlueColor,
+          // backgroundColor: kDarkBlueColor,
           centerTitle: true,
           title: const Text("Book Library"),
         ),
@@ -120,95 +120,94 @@ class _BookLibraryState extends State<BookLibrary> {
                                   elevation: 3,
                                   shadowColor: Colors.red,
                                   child: ListTile(
-                                      title: Padding(
-                                        padding: const EdgeInsets.all(5.0),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
+                                    title: Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            libraryCtrl.foundBook[index]
+                                                ["bookName"],
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white),
+                                          ),
+                                          const SizedBox(
+                                            height: 10,
+                                          ),
+                                          Row(
+                                            children: [
                                               libraryCtrl.foundBook[index]
-                                                  ["bookName"],
+                                                      .containsKey("authorName")
+                                                  ? Row(
+                                                      children: [
+                                                        const Text(
+                                                          "Issued by :",
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .symmetric(
+                                                                  horizontal:
+                                                                      8.0),
+                                                          child: Text(
+                                                            libraryCtrl.foundBook[
+                                                                    index]
+                                                                ["authorName"],
+                                                            style:
+                                                                const TextStyle(
+                                                                    color: Colors
+                                                                        .white),
+                                                          ),
+                                                        )
+                                                      ],
+                                                    )
+                                                  : const Text(
+                                                      "No author",
+                                                      style: TextStyle(
+                                                          color: Colors.red),
+                                                    ),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    trailing: libraryCtrl.foundBook[index] !=
+                                                "" &&
+                                            libraryCtrl.foundBook[index]
+                                                .containsKey("Price")
+                                        ? Padding(
+                                            padding: const EdgeInsets.all(5.0),
+                                            child: Text(
+                                              "Rs: ${libraryCtrl.foundBook[index]["Price"].toString()}/",
                                               style: const TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   color: Colors.white),
                                             ),
-                                            const SizedBox(
-                                              height: 10,
-                                            ),
-                                            Row(
-                                              children: [
-                                                libraryCtrl.foundBook[index]
-                                                        .containsKey(
-                                                            "authorName")
-                                                    ? Row(
-                                                        children: [
-                                                          const Text(
-                                                            "Issued by :",
-                                                            style: TextStyle(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                color: Colors
-                                                                    .white),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                        .symmetric(
-                                                                    horizontal:
-                                                                        8.0),
-                                                            child: Text(
-                                                              libraryCtrl.foundBook[
-                                                                      index][
-                                                                  "authorName"],
-                                                              style: const TextStyle(
-                                                                  color: Colors
-                                                                      .white),
-                                                            ),
-                                                          )
-                                                        ],
-                                                      )
-                                                    : const Text(
-                                                        "No author",
-                                                        style: TextStyle(
-                                                            color: Colors.red),
-                                                      ),
-                                              ],
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                      trailing: libraryCtrl.foundBook[index]
-                                                  .containsKey("Price") ||
-                                              libraryCtrl.foundBook[index]
-                                                  .containsKey("date")
-                                          ? Padding(
-                                              padding:
-                                                  const EdgeInsets.all(5.0),
+                                          )
+                                        : Container(
+                                            decoration: BoxDecoration(
+                                                color: Colors.red,
+                                                borderRadius:
+                                                    BorderRadius.circular(5.0)),
+                                            width: 100,
+                                            height: 30,
+                                            child: const Center(
                                               child: Text(
-                                                "Rs: ${libraryCtrl.foundBook[index]["Price"].toString()}/",
-                                                style: const TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.white),
-                                              ),
-                                            )
-                                          : Container(
-                                              decoration: BoxDecoration(
-                                                  color: Colors.red,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          5.0)),
-                                              width: 100,
-                                              height: 30,
-                                              child: const Center(
-                                                child: Text(
-                                                  "Out of stocks",
-                                                  style: TextStyle(
-                                                    color: Colors.white,
-                                                  ),
+                                                "Out of stocks",
+                                                style: TextStyle(
+                                                  color: Colors.white,
                                                 ),
-                                              ))),
+                                              ),
+                                            )),
+                                  ),
                                 ),
                               ),
                             );

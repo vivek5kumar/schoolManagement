@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:schoolmanagement/custom_widgets/colors.dart';
 
 class MessageController extends GetxController {
   List<Map<String, dynamic>> messageList = [
@@ -12,7 +13,12 @@ class MessageController extends GetxController {
       "msg": "hello guy",
       "date": "12/11/2021"
     },
-    {"id": 3, "name": "Garun Kumar", "msg": "Hey guy", "date": "12/11/2021"},
+    {
+      "id": 3,
+      "name": "Garun Kumar",
+      "msg": "hello garun,how r you",
+      "date": "12/11/2021"
+    },
     {"id": 4, "name": "Manish Kumar", "msg": "Hey guy", "date": "12/11/2021"},
     {"id": 5, "name": "Nishant Kumar", "msg": "Hey guy", "date": "12/11/2021"},
     {"id": 6, "name": "Akash Kumar", "msg": "Hey guy", "date": "12/11/2021"},
@@ -38,21 +44,34 @@ class MessageController extends GetxController {
           return BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
             child: AlertDialog(
+              backgroundColor: kLightYellowColor,
               content: SizedBox(
                   height: 75,
                   width: 300,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      messageList[i].containsKey("msg")
+                          ? Text(
+                              messageList[i]["date"].toString(),
+                              style: const TextStyle(color: kWhiteColor),
+                            )
+                          : Text("no data"),
                       Text(
-                        messageList[i]["date"].toString(),
-                        style: const TextStyle(color: Colors.blue),
+                        messageList[i]["name"],
+                        style: const TextStyle(color: kWhiteColor),
                       ),
-                      Text(messageList[i]["name"]),
-                      Text(
-                        messageList[i]["msg"],
-                        style:
-                            const TextStyle(fontSize: 14, color: Colors.grey),
+                      Visibility(
+                        visible: messageList[i]["msg"] != "",
+                        child: Row(
+                          children: [
+                            Text("SMS :"),
+                            Text(
+                              messageList[i]["msg"],
+                              style: const TextStyle(color: kWhiteColor),
+                            ),
+                          ],
+                        ),
                       )
                     ],
                   )),

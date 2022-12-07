@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:schoolmanagement/custom_widgets/colors.dart';
 
@@ -9,7 +12,7 @@ import 'package:schoolmanagement/screens/Holiday/holiday.dart';
 import 'package:schoolmanagement/screens/Homework/homework.dart';
 import 'package:schoolmanagement/screens/Library/book_libraryList.dart';
 import 'package:schoolmanagement/screens/NoticeBoard/notice_boardpage.dart';
-import 'package:schoolmanagement/profile/student_accountpage.dart';
+import 'package:schoolmanagement/profile/student_profile.dart';
 
 import '../screens/Exam/exam_list.dart';
 import '../screens/Result/result_exampage.dart';
@@ -82,5 +85,60 @@ class DashBordController extends GetxController {
     } else if (i == 10) {
       Get.to(BookLibrary());
     }
+  }
+
+  willPop(context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
+            child: AlertDialog(
+                backgroundColor: Colors.red[100],
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.0)),
+                title: const Text(
+                  "Exit app",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                content: Container(
+                  child: const Text(
+                    "Are you sure you want to exit?",
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    child: const Text(
+                      "Cancel",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  MaterialButton(
+                    onPressed: () {
+                      SystemNavigator.pop();
+                    },
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0)),
+                    // color: kRedColor,
+                    child: const Text(
+                      "OK",
+                      style: TextStyle(
+                        // color: Colors.red,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  )
+                ]),
+          );
+        });
   }
 }

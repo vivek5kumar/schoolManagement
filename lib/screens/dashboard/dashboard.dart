@@ -146,72 +146,78 @@ class _DashBoardState extends State<DashBoard> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Scaffold(
-        resizeToAvoidBottomInset: false,
-        drawer: openeDrawer(),
-        appBar: AppBar(
-          backgroundColor: kLightBlueColor,
-          actions: [
-            InkWell(
-                onTap: () =>
-                    loginCtrl.isLogin ? loginCtrl.showLogDialog(context) : null,
-                child: const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(Icons.logout),
-                ))
-          ],
-          centerTitle: true,
-          title: const Text("DashBoard"),
-        ),
-        body: Container(
-          height: MediaQuery.of(context).size.height,
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  alignment: Alignment.bottomCenter,
-                  // fit: BoxFit.cover,
-                  opacity: 1,
-                  repeat: ImageRepeat.repeat,
-                  image: NetworkImage(
-                    'https://registration.iimsambalpuradmissions.in/exphd/images/background.png',
-                  ))),
-          child: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: GridView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  // childAspectRatio: 19 / 12,
-                  mainAxisSpacing: 15.0,
-                  crossAxisSpacing: 15.0,
-                ),
-                itemCount: dashBordCtrl.dashboardIconList.length,
-                itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: () {
-                      loginCtrl.isLogin
-                          ? dashBordCtrl.onTap(index)
-                          : Get.to(StudentLoginPage());
-                    },
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        CircleAvatar(
-                            backgroundColor: dashBordCtrl.colorList[index],
-                            maxRadius: 40,
-                            child: GridTile(
-                                child: Icon(
-                              dashBordCtrl.dashboardIconList[index],
-                              size: 45,
-                              color: Colors.white,
-                            ))),
-                        Text(dashBordCtrl.dashBordName[index]),
-                      ],
-                    ),
-                  );
-                },
-              )),
-        ));
+    return WillPopScope(
+      onWillPop: () {
+        return dashBordCtrl.willPop(context);
+      },
+      child: Scaffold(
+          resizeToAvoidBottomInset: false,
+          drawer: openeDrawer(),
+          appBar: AppBar(
+            backgroundColor: kLightBlueColor,
+            actions: [
+              InkWell(
+                  onTap: () => loginCtrl.isLogin
+                      ? loginCtrl.showLogDialog(context)
+                      : null,
+                  child: const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Icon(Icons.logout),
+                  ))
+            ],
+            centerTitle: true,
+            title: const Text("DashBoard"),
+          ),
+          body: Container(
+            height: MediaQuery.of(context).size.height,
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    alignment: Alignment.bottomCenter,
+                    // fit: BoxFit.cover,
+                    opacity: 1,
+                    repeat: ImageRepeat.repeat,
+                    image: NetworkImage(
+                      'https://registration.iimsambalpuradmissions.in/exphd/images/background.png',
+                    ))),
+            child: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: GridView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    // childAspectRatio: 19 / 12,
+                    mainAxisSpacing: 15.0,
+                    crossAxisSpacing: 15.0,
+                  ),
+                  itemCount: dashBordCtrl.dashboardIconList.length,
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                      onTap: () {
+                        loginCtrl.isLogin
+                            ? dashBordCtrl.onTap(index)
+                            : Get.to(StudentLoginPage());
+                      },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          CircleAvatar(
+                              backgroundColor: dashBordCtrl.colorList[index],
+                              maxRadius: 40,
+                              child: GridTile(
+                                  child: Icon(
+                                dashBordCtrl.dashboardIconList[index],
+                                size: 45,
+                                color: Colors.white,
+                              ))),
+                          Text(dashBordCtrl.dashBordName[index]),
+                        ],
+                      ),
+                    );
+                  },
+                )),
+          )),
+    );
   }
 }

@@ -8,7 +8,7 @@ class BookDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: kDarkBlueColor,
+        // backgroundColor: kDarkBlueColor,
         appBar: AppBar(
           title: const Text("Book Details"),
           centerTitle: true,

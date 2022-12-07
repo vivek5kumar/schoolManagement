@@ -15,7 +15,7 @@ class LibraryController extends GetxController {
       "authorName": "Mantosh",
       "bookName": "Communication English",
       "Price": 280,
-      "date": 08 / 10 / 2021
+      "date": " 08 / 10 / 2021"
     },
     {
       "id": 3,
