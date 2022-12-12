@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:schoolmanagement/Utils/regex.dart';
 import 'package:schoolmanagement/controller/loginController.dart';
 import 'package:schoolmanagement/custom_widgets/colors.dart';
 import 'package:schoolmanagement/custom_widgets/custom_sizes.dart';
@@ -112,7 +113,7 @@ class _StudentLoginPageState extends State<StudentLoginPage> {
                               borderRadius: BorderRadius.circular(50))),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          loginCtrl.login();
+                          // loginCtrl.login();
                         }
                       },
                       child: Obx(() => !loginCtrl.isLoading.value

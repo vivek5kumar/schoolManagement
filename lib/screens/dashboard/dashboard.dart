@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:schoolmanagement/controller/dashbordContro.dart';
@@ -147,10 +148,10 @@ class _DashBoardState extends State<DashBoard> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return WillPopScope(
-      onWillPop: () {
-        return dashBordCtrl.willPop(context);
-      },
-      child: Scaffold(
+        onWillPop: () {
+          return dashBordCtrl.willPop(context);
+        },
+        child: Scaffold(
           resizeToAvoidBottomInset: false,
           drawer: openeDrawer(),
           appBar: AppBar(
@@ -179,45 +180,74 @@ class _DashBoardState extends State<DashBoard> {
                     image: NetworkImage(
                       'https://registration.iimsambalpuradmissions.in/exphd/images/background.png',
                     ))),
-            child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: GridView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    // childAspectRatio: 19 / 12,
-                    mainAxisSpacing: 15.0,
-                    crossAxisSpacing: 15.0,
+            child: ListView(
+              children: [
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 100,
+                  child: CarouselSlider(
+                    options: CarouselOptions(autoPlay: true, height: 400.0),
+                    items: dashBordCtrl.imageList.map((i) {
+                      return Builder(
+                        builder: (BuildContext context) {
+                          return Container(
+                            width: MediaQuery.of(context).size.width,
+                            margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                            decoration: BoxDecoration(
+                                color: kLightBlueColor,
+                                borderRadius: BorderRadius.circular(10)),
+                          );
+                        },
+                      );
+                    }).toList(),
                   ),
-                  itemCount: dashBordCtrl.dashboardIconList.length,
-                  itemBuilder: (context, index) {
-                    return InkWell(
-                      onTap: () {
-                        loginCtrl.isLogin
-                            ? dashBordCtrl.onTap(index)
-                            : Get.to(StudentLoginPage());
-                      },
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          CircleAvatar(
-                              backgroundColor: dashBordCtrl.colorList[index],
-                              maxRadius: 40,
-                              child: GridTile(
-                                  child: Icon(
-                                dashBordCtrl.dashboardIconList[index],
-                                size: 45,
-                                color: Colors.white,
-                              ))),
-                          Text(dashBordCtrl.dashBordName[index]),
-                        ],
+                ),
+                Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: GridView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        // childAspectRatio: 19 / 12,
+                        mainAxisSpacing: 15.0,
+                        crossAxisSpacing: 15.0,
                       ),
-                    );
-                  },
-                )),
-          )),
-    );
+                      itemCount: dashBordCtrl.dashboardIconList.length,
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          onTap: () {
+                            // loginCtrl.isLogin ?
+
+                            dashBordCtrl.onTap(index);
+                            // : Get.to(StudentLoginPage());
+                          },
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              CircleAvatar(
+                                  backgroundColor:
+                                      dashBordCtrl.colorList[index],
+                                  maxRadius: 40,
+                                  child: GridTile(
+                                      child: Icon(
+                                    dashBordCtrl.dashboardIconList[index],
+                                    size: 45,
+                                    color: Colors.white,
+                                  ))),
+                              Text(dashBordCtrl.dashBordName[index]),
+                            ],
+                          ),
+                        );
+                      },
+                    )),
+              ],
+            ),
+          ),
+        ));
   }
 }

@@ -141,4 +141,12 @@ class DashBordController extends GetxController {
           );
         });
   }
+
+//Carousel image list
+
+  var imageList = [
+    Image.asset("assets/images/citizen.jpg"),
+    Image.asset("assets/images/cloth.jpg"),
+    Image.asset("assets/images/hello.jpg"),
+  ];
 }

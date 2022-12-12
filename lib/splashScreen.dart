@@ -4,9 +4,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:schoolmanagement/controller/loginController.dart';
-import 'package:schoolmanagement/login/user_login.dart';
 import 'package:schoolmanagement/no_internate.dart';
-import 'package:schoolmanagement/screens/dashboard/dashboard.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -51,18 +49,20 @@ class _SplashScreenState extends State<SplashScreen> {
 
   checkLogin() async {
     prefs = await SharedPreferences.getInstance();
-    isLogin = prefs.getBool(
-          "isLogin",
-        ) ??
-        false;
-    if (!isLogin) {
-      Get.off(StudentLoginPage());
-    } else {
-      loginCtrl.ctrl[0].text = prefs.getString("email").toString();
-      loginCtrl.ctrl[1].text = prefs.getString("password").toString();
-      await loginCtrl.login();
-      Get.off(DashBoard());
-    }
+    Get.toNamed('/dashBoard');
+
+    // isLogin = prefs.getBool(
+    //       "isLogin",
+    //     ) ??
+    //     false;
+    // if (!isLogin) {
+    //   Get.off(StudentLoginPage());
+    // } else {
+    //   loginCtrl.ctrl[0].text = prefs.getString("email").toString();
+    //   loginCtrl.ctrl[1].text = prefs.getString("password").toString();
+    //   // await loginCtrl.login();
+
+    // }
   }
 
   @override

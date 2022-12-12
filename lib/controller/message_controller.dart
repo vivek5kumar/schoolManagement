@@ -6,13 +6,8 @@ import 'package:schoolmanagement/custom_widgets/colors.dart';
 
 class MessageController extends GetxController {
   List<Map<String, dynamic>> messageList = [
-    {"id": 1, "name": "Vivek Kumar", "msg": "Hey guy", "date": "12/11/2021"},
-    {
-      "id": 2,
-      "name": "mantosh Kumar",
-      "msg": "hello guy",
-      "date": "12/11/2021"
-    },
+    {"id": 1, "name": "Vivek Kumar", "msg": "", "date": "12/11/2021"},
+    {"id": 2, "name": "mantosh Kumar", "msg": "", "date": "12/11/2021"},
     {
       "id": 3,
       "name": "Garun Kumar",
@@ -61,17 +56,18 @@ class MessageController extends GetxController {
                         messageList[i]["name"],
                         style: const TextStyle(color: kWhiteColor),
                       ),
-                      Visibility(
-                        visible: messageList[i]["msg"] != "",
-                        child: Row(
-                          children: [
-                            Text("SMS :"),
-                            Text(
+                      Row(
+                        children: [
+                          Text("SMS :"),
+                          Visibility(
+                            visible: messageList[i]["msg"] != "" &&
+                                messageList[i].containsKey("msg"),
+                            child: Text(
                               messageList[i]["msg"],
                               style: const TextStyle(color: kWhiteColor),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       )
                     ],
                   )),

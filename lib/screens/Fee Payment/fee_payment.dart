@@ -41,8 +41,12 @@ class _FeePaymentPageState extends State<FeePaymentPage> {
               children: [
                 InkWell(
                     onTap: () => scanQRCode(),
-                    child: const Icon(Icons.qr_code_scanner_rounded)),
-                const Text('scan')
+                    child: const CircleAvatar(
+                        backgroundColor: Colors.red,
+                        child: Icon(
+                          Icons.qr_code_scanner_rounded,
+                          color: kWhiteColor,
+                        ))),
               ],
             ),
           )

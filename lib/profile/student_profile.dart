@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:schoolmanagement/Utils/regex.dart';
 import 'package:schoolmanagement/controller/profile_controller.dart';
 import 'package:schoolmanagement/custom_widgets/account_textfield.dart';
 import 'package:schoolmanagement/custom_widgets/colors.dart';
@@ -155,6 +156,7 @@ class _StudentAccountState extends State<StudentAccount> {
                     validateMode: AutovalidateMode.onUserInteraction,
                     controller: accountCtrl.controller[0],
                     security: !showPass,
+                    maxLength: 10,
                     suffixIcon: InkWell(
                       onTap: () {
                         setState(() {
@@ -168,6 +170,8 @@ class _StudentAccountState extends State<StudentAccount> {
                     validator: (val) {
                       if (val.isEmpty) {
                         return "Required";
+                      } else if (!passwordRegex.hasMatch(val)) {
+                        return "Password must be 10 digit with alphabat ";
                       }
                     },
                   ),
