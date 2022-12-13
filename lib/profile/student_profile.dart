@@ -24,7 +24,7 @@ class _StudentAccountState extends State<StudentAccount> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       // resizeToAvoidBottomInset: false,
-      // backgroundColor: kPrimaryColor,
+      backgroundColor: kPrimaryColor,
       appBar: AppBar(
         title: const Text("Account"),
         centerTitle: true,
@@ -33,15 +33,15 @@ class _StudentAccountState extends State<StudentAccount> {
         color: kLightBlueColor,
         onRefresh: () async {},
         child: Container(
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  alignment: Alignment.bottomCenter,
-                  // fit: BoxFit.cover,
-                  opacity: 1,
-                  repeat: ImageRepeat.repeat,
-                  image: NetworkImage(
-                    'https://registration.iimsambalpuradmissions.in/exphd/images/background.png',
-                  ))),
+          // decoration: const BoxDecoration(
+          //     image: DecorationImage(
+          //         alignment: Alignment.bottomCenter,
+          //         // fit: BoxFit.cover,
+          //         opacity: 1,
+          //         repeat: ImageRepeat.repeat,
+          //         image: NetworkImage(
+          //           'https://registration.iimsambalpuradmissions.in/exphd/images/background.png',
+          //         ))),
           child: Padding(
             padding: const EdgeInsets.all(AppPadding.p8),
             child: Form(
@@ -52,6 +52,7 @@ class _StudentAccountState extends State<StudentAccount> {
                   Column(
                     children: [
                       const CircleAvatar(
+                        backgroundColor: kWhiteColor,
                         child: Text("Hi"),
                       ),
                       const Text("Student App"),
@@ -62,34 +63,57 @@ class _StudentAccountState extends State<StudentAccount> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text("User NAme:"),
-                          const Text("Student Name")
+                          const Text(
+                            "User NAme:",
+                            style: TextStyle(
+                              color: kWhiteColor,
+                            ),
+                          ),
+                          const Text(
+                            "Student Name",
+                            style: TextStyle(
+                              color: kWhiteColor,
+                            ),
+                          )
                         ],
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text("User NAme:"),
-                          const Text("Student Name")
+                          const Text(
+                            "User NAme:",
+                            style: TextStyle(
+                              color: kWhiteColor,
+                            ),
+                          ),
+                          const Text(
+                            "Student Name",
+                            style: TextStyle(
+                              color: kWhiteColor,
+                            ),
+                          )
                         ],
                       ),
                     ],
                   ),
                   const Divider(
-                    color: kPrimaryColor,
+                    color: kWhiteColor,
                     thickness: 1,
                   ),
                   const Text(
                     "Parents Information",
                     style: TextStyle(
-                        fontSize: FontSize.s18,
-                        fontWeight: FontWeightManager.bold),
+                      fontSize: FontSize.s18,
+                      fontWeight: FontWeightManager.bold,
+                      color: kWhiteColor,
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(AppPadding.p8),
                     child: Row(
                       children: [
                         const CircleAvatar(
+                          backgroundColor: kWhiteColor,
                           child: Text("M"),
                         ),
                         Padding(
@@ -98,15 +122,18 @@ class _StudentAccountState extends State<StudentAccount> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text(
+                              Text(
                                 "Mother Name",
                                 style: TextStyle(
                                     fontSize: FontSize.s16,
-                                    fontWeight: FontWeightManager.bold),
+                                    fontWeight: FontWeightManager.bold,
+                                    color: kWhiteColor),
                               ),
-                              const Text(
+                              Text(
                                 "Mother",
-                                style: TextStyle(color: Colors.grey),
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                ),
                               ),
                             ],
                           ),
@@ -122,6 +149,7 @@ class _StudentAccountState extends State<StudentAccount> {
                     child: Row(
                       children: [
                         const CircleAvatar(
+                          backgroundColor: kWhiteColor,
                           child: Text("P"),
                         ),
                         Padding(
@@ -130,13 +158,17 @@ class _StudentAccountState extends State<StudentAccount> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
+                              const Text(
                                 "Parents Name",
                                 style: TextStyle(
                                     fontSize: FontSize.s16,
-                                    fontWeight: FontWeightManager.bold),
+                                    fontWeight: FontWeightManager.bold,
+                                    color: kWhiteColor),
                               ),
-                              Text("Father"),
+                              const Text(
+                                "Father",
+                                style: TextStyle(color: kWhiteColor),
+                              ),
                             ],
                           ),
                         ),
@@ -147,10 +179,12 @@ class _StudentAccountState extends State<StudentAccount> {
                     thickness: 1,
                   ),
                   const Text(
-                    "Account Setting",
+                    "Account Setting :",
                     style: TextStyle(
-                        fontSize: FontSize.s18,
-                        fontWeight: FontWeightManager.bold),
+                      fontSize: FontSize.s18,
+                      fontWeight: FontWeightManager.bold,
+                      color: kWhiteColor,
+                    ),
                   ),
                   AccountTextField(
                     validateMode: AutovalidateMode.onUserInteraction,
@@ -209,10 +243,12 @@ class _StudentAccountState extends State<StudentAccount> {
                     thickness: 1,
                   ),
                   const Text(
-                    "Address",
+                    "Address :",
                     style: TextStyle(
-                        fontSize: FontSize.s16,
-                        fontWeight: FontWeightManager.bold),
+                      fontSize: FontSize.s16,
+                      fontWeight: FontWeightManager.bold,
+                      color: kWhiteColor,
+                    ),
                   ),
                   AccountTextField(
                     validateMode: AutovalidateMode.onUserInteraction,
@@ -227,8 +263,10 @@ class _StudentAccountState extends State<StudentAccount> {
                   const Text(
                     "City",
                     style: TextStyle(
-                        fontSize: FontSize.s16,
-                        fontWeight: FontWeightManager.bold),
+                      fontSize: FontSize.s16,
+                      fontWeight: FontWeightManager.bold,
+                      color: kWhiteColor,
+                    ),
                   ),
                   AccountTextField(
                     validateMode: AutovalidateMode.onUserInteraction,
@@ -243,8 +281,10 @@ class _StudentAccountState extends State<StudentAccount> {
                   const Text(
                     "State",
                     style: TextStyle(
-                        fontSize: FontSize.s16,
-                        fontWeight: FontWeightManager.bold),
+                      fontSize: FontSize.s16,
+                      fontWeight: FontWeightManager.bold,
+                      color: kWhiteColor,
+                    ),
                   ),
                   AccountTextField(
                     validateMode: AutovalidateMode.onUserInteraction,
@@ -259,8 +299,10 @@ class _StudentAccountState extends State<StudentAccount> {
                   const Text(
                     "Phone",
                     style: TextStyle(
-                        fontSize: FontSize.s16,
-                        fontWeight: FontWeightManager.bold),
+                      fontSize: FontSize.s16,
+                      fontWeight: FontWeightManager.bold,
+                      color: kWhiteColor,
+                    ),
                   ),
                   AccountTextField(
                     validateMode: AutovalidateMode.onUserInteraction,
@@ -276,8 +318,10 @@ class _StudentAccountState extends State<StudentAccount> {
                   const Text(
                     "Email",
                     style: TextStyle(
-                        fontSize: FontSize.s16,
-                        fontWeight: FontWeightManager.bold),
+                      fontSize: FontSize.s16,
+                      fontWeight: FontWeightManager.bold,
+                      color: kWhiteColor,
+                    ),
                   ),
                   AccountTextField(
                     validateMode: AutovalidateMode.onUserInteraction,

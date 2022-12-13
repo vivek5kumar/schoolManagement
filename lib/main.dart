@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const SplashScreen(),
         // '/userLogin': (context) => StudentLoginPage(),
-        '/dashBoard': (context) => DashBoard()
+        '/dashBoard': (context) => const DashBoard()
       },
     );
   }

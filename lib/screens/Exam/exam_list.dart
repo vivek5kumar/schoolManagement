@@ -78,12 +78,21 @@ class _ExamListState extends State<ExamList> {
                       padding: const EdgeInsets.all(AppPadding.p8),
                       child: Align(
                           alignment: Alignment.topRight,
-                          child: InkWell(
-                              child: InkWell(
-                                  onTap: () {
-                                    Get.to(AllDetails());
-                                  },
-                                  child: const Text("View All")))),
+                          child: GestureDetector(
+                              onTap: () {
+                                Get.to(AllDetails());
+                              },
+                              child: Container(
+                                  decoration: BoxDecoration(
+                                      color: kRedColor,
+                                      borderRadius: BorderRadius.circular(5)),
+                                  width: 70,
+                                  height: 30,
+                                  child: const Center(
+                                      child: Text(
+                                    "View All",
+                                    style: TextStyle(color: kWhiteColor),
+                                  ))))),
                     ),
                     for (int i = 0; i < 2; i++)
                       SizedBox(

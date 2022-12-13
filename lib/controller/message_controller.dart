@@ -6,14 +6,14 @@ import 'package:schoolmanagement/custom_widgets/colors.dart';
 
 class MessageController extends GetxController {
   List<Map<String, dynamic>> messageList = [
-    {"id": 1, "name": "Vivek Kumar", "msg": "", "date": "12/11/2021"},
-    {"id": 2, "name": "mantosh Kumar", "msg": "", "date": "12/11/2021"},
     {
-      "id": 3,
-      "name": "Garun Kumar",
-      "msg": "hello garun,how r you",
+      "id": 1,
+      "name": "Vivek Kumar",
+      "msg": "hi,dear how r you",
       "date": "12/11/2021"
     },
+    {"id": 2, "name": "mantosh Kumar", "msg": "", "date": "12/11/2021"},
+    {"id": 3, "name": "Garun Kumar", "msg": "", "date": "12/11/2021"},
     {"id": 4, "name": "Manish Kumar", "msg": "Hey guy", "date": "12/11/2021"},
     {"id": 5, "name": "Nishant Kumar", "msg": "Hey guy", "date": "12/11/2021"},
     {"id": 6, "name": "Akash Kumar", "msg": "Hey guy", "date": "12/11/2021"},
@@ -39,7 +39,7 @@ class MessageController extends GetxController {
           return BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
             child: AlertDialog(
-              backgroundColor: kLightYellowColor,
+              backgroundColor: kRedColor,
               content: SizedBox(
                   height: 75,
                   width: 300,
@@ -51,14 +51,14 @@ class MessageController extends GetxController {
                               messageList[i]["date"].toString(),
                               style: const TextStyle(color: kWhiteColor),
                             )
-                          : Text("no data"),
+                          : const Text("no data"),
                       Text(
                         messageList[i]["name"],
                         style: const TextStyle(color: kWhiteColor),
                       ),
                       Row(
                         children: [
-                          Text("SMS :"),
+                          const Text("SMS :"),
                           Visibility(
                             visible: messageList[i]["msg"] != "" &&
                                 messageList[i].containsKey("msg"),

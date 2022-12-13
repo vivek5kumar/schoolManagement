@@ -50,7 +50,7 @@ class DashBordController extends GetxController {
   var colorList = [
     kLightBlueColor,
     kRedColor,
-    kLightYellowColor,
+    kLightyellowColor,
     kLightBlueColor,
     kLightPinkColor,
     kGreyColor,

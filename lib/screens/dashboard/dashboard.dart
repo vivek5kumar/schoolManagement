@@ -37,7 +37,7 @@ class _DashBoardState extends State<DashBoard> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     const CircleAvatar(
-                      foregroundColor: kLightYellowColor,
+                      foregroundColor: kRedColor,
                       maxRadius: 30,
                       child: Text(
                         "Hi",
