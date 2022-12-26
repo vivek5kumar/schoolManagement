@@ -220,8 +220,7 @@ class _DashBoardState extends State<DashBoard> {
                       itemBuilder: (context, index) {
                         return InkWell(
                           onTap: () {
-                            // loginCtrl.isLogin ?
-
+                            // loginCtrl.isLogin?
                             dashBordCtrl.onTap(index);
                             // : Get.to(StudentLoginPage());
                           },

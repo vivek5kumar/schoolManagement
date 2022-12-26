@@ -1,9 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:schoolmanagement/Utils/auth.manager.dart';
 import 'package:schoolmanagement/custom_widgets/colors.dart';
-import 'package:schoolmanagement/screens/dashboard/dashboard.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginController extends GetxController {
@@ -48,7 +45,7 @@ class LoginController extends GetxController {
   //     }
   //   });
   //   setLoading(false);
-  //   // update();
+  //   update();
   // }
 
   logout(context) async {

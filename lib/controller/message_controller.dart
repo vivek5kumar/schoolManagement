@@ -46,7 +46,7 @@ class MessageController extends GetxController {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      messageList[i].containsKey("msg")
+                      messageList[i].containsKey("name")
                           ? Text(
                               messageList[i]["date"].toString(),
                               style: const TextStyle(color: kWhiteColor),
@@ -56,18 +56,30 @@ class MessageController extends GetxController {
                         messageList[i]["name"],
                         style: const TextStyle(color: kWhiteColor),
                       ),
-                      Row(
-                        children: [
-                          const Text("SMS :"),
-                          Visibility(
-                            visible: messageList[i]["msg"] != "" &&
-                                messageList[i].containsKey("msg"),
-                            child: Text(
+                      Visibility(
+                        visible: messageList[i]["msg"] != "" &&
+                            messageList[i].containsKey("msg"),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text("SMS :"),
+                            Text(
                               messageList[i]["msg"],
                               style: const TextStyle(color: kWhiteColor),
                             ),
-                          ),
-                        ],
+                            InkWell(
+                                onTap: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return const AlertDialog(
+                                          actions: [Text("hi")],
+                                        );
+                                      });
+                                },
+                                child: const Text("more"))
+                          ],
+                        ),
                       )
                     ],
                   )),

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:schoolmanagement/controller/resultController.dart';
 import 'package:schoolmanagement/custom_widgets/colors.dart';
 import 'package:schoolmanagement/custom_widgets/custom_sizes.dart';
+import 'package:schoolmanagement/screens/Result/practicepage.dart';
 
 class ExamResult extends StatefulWidget {
   const ExamResult({super.key});
@@ -13,7 +14,7 @@ class ExamResult extends StatefulWidget {
 
 class _ExamResultState extends State<ExamResult> {
   final resultCtrl = Get.put(ExamResultController());
-  bool checkValue = false;
+  // bool checkValue = false;
 
   int radioValue = 1;
   int selectedRadioTile = 1;
@@ -24,6 +25,8 @@ class _ExamResultState extends State<ExamResult> {
     });
   }
 
+  List<bool> checkValue = [false, false, false, false, false];
+  var btnName = ["Red", "Blue", "Green", "Yellow", "Pink"];
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -173,10 +176,36 @@ class _ExamResultState extends State<ExamResult> {
                                   }
                                 : null),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
+              Column(
+                children: [
+                  for (int i = 0; i < btnName.length; i++)
+                    CheckboxListTile(
+                        value: checkValue[i],
+                        title: Visibility(
+                          visible: checkValue[i],
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: Text(btnName[i]),
+                          ),
+                        ),
+                        checkColor: Colors.red,
+                        activeColor: Colors.yellow,
+                        onChanged: (val) {
+                          setState(() {
+                            checkValue[i] = val!;
+                          });
+                        }),
+                ],
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    Get.to(PracticePage());
+                  },
+                  child: Text("practice page"))
             ],
           ),
         ),

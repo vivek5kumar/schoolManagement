@@ -4,6 +4,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:schoolmanagement/controller/loginController.dart';
+import 'package:schoolmanagement/login/user_login.dart';
 import 'package:schoolmanagement/no_internate.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -56,12 +57,12 @@ class _SplashScreenState extends State<SplashScreen> {
     //     ) ??
     //     false;
     // if (!isLogin) {
-    //   Get.off(StudentLoginPage());
+    //   Get.toNamed('/dashBoard');
     // } else {
     //   loginCtrl.ctrl[0].text = prefs.getString("email").toString();
     //   loginCtrl.ctrl[1].text = prefs.getString("password").toString();
-    //   // await loginCtrl.login();
-
+    //   await loginCtrl.login();
+    //   // Get.toNamed('/dashBoard');
     // }
   }
 

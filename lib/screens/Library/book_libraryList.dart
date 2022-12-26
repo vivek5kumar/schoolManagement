@@ -180,17 +180,13 @@ class _BookLibraryState extends State<BookLibrary> {
                                                                 )
                                                               ],
                                                             )
-                                                          : const Text(
-                                                              "No author",
-                                                              style: TextStyle(
-                                                                  color: Colors
-                                                                      .red),
-                                                            ),
+                                                          : const Text(""),
                                                     ],
                                                   )
                                                 ],
                                               ),
                                             ),
+                                            // ignore: unrelated_type_equality_checks
                                             trailing: libraryCtrl
                                                             .foundBook[index] !=
                                                         "" &&
