@@ -41,9 +41,8 @@ dependencies:
   intl: ^0.17.0
   flutter_screenutil: ^5.6.0
   carousel_slider: ^4.1.1
-  flutter_staggered_animations: ^1.1.1
-  flutter_animated_cards: ^0.0.2
   octo_image: ^1.0.2
+  agora_rtc_engine: ^6.1.0
 
 
   # The following adds the Cupertino Icons font to your application.

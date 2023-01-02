@@ -25,6 +25,10 @@ class _ExamResultState extends State<ExamResult> {
     });
   }
 
+  bool checkVal = false;
+
+  hideBtnFun(int index, String name, bool isHide) {}
+
   List<bool> checkValue = [false, false, false, false, false];
   var btnName = ["Red", "Blue", "Green", "Yellow", "Pink"];
   @override
@@ -205,7 +209,7 @@ class _ExamResultState extends State<ExamResult> {
                   onPressed: () {
                     Get.to(PracticePage());
                   },
-                  child: Text("practice page"))
+                  child: Text("practice page")),
             ],
           ),
         ),

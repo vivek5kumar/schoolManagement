@@ -18,6 +18,7 @@ class MyCardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int showValue = 1;
     return SizedBox(
       height: 120,
       child: Card(
@@ -72,6 +73,7 @@ class MyCardPage extends StatelessWidget {
                     address.toString(),
                     style: TextStyle(color: kWhiteColor),
                   ),
+                  // Switch(value:isShow , onChanged: (value){})
                 ],
               )
             ],

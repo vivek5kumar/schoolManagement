@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:schoolmanagement/custom_card/card.dart';
 import 'package:schoolmanagement/custom_widgets/colors.dart';
+import 'package:schoolmanagement/screens/Result/cyclecpage.dart';
+import 'package:schoolmanagement/screens/Result/tab_bar_page.dart';
 
 class PracticePage extends StatefulWidget {
   const PracticePage({super.key});
@@ -107,39 +109,63 @@ class _PracticePageState extends State<PracticePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: kDarkBlueColor,
-        title: const Text("Test"),
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        backgroundColor: kGreyColor,
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: kDarkBlueColor,
+          // title: const Text("Test"),a
+          bottom: const TabBar(
+            tabs: [
+              Tab(
+                text: "EMAIL",
+              ),
+              Tab(
+                text: "PAN",
+              ),
+              Tab(
+                text: "BANK",
+              ),
+            ],
+          ),
+        ),
+        body: TabBarView(
+          children: [
+            ListView.builder(
+                itemCount: userDetails.length,
+                itemBuilder: (context, index) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Switch(
+                          activeColor: kDarkBlueColor,
+                          value: showDataList.contains(index),
+                          onChanged: (val) {
+                            switchFun(
+                              index,
+                            );
+                          }),
+                      showDataList.contains(index)
+                          ? MyCardPage(
+                              name: userDetails[index]["name"],
+                              qualificatin: userDetails[index]
+                                      .containsKey("qualification")
+                                  ? userDetails[index]["qualification"]
+                                  : userDetails[index]["msg"],
+                              age: userDetails[index]["age"],
+                              address: userDetails[index]["address"],
+                            )
+                          : const Text(""),
+                    ],
+                  );
+                }),
+            const TabViewPage(),
+            const TrackingPage()
+          ],
+        ),
       ),
-      body: ListView.builder(
-          itemCount: userDetails.length,
-          itemBuilder: (context, index) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Switch(
-                    activeColor: kDarkBlueColor,
-                    value: showDataList.contains(index),
-                    onChanged: (val) {
-                      switchFun(
-                        index,
-                      );
-                    }),
-                showDataList.contains(index)
-                    ? MyCardPage(
-                        name: userDetails[index]["name"],
-                        qualificatin:
-                            userDetails[index].containsKey("qualification")
-                                ? userDetails[index]["qualification"]
-                                : userDetails[index]["msg"],
-                        age: userDetails[index]["age"],
-                        address: userDetails[index]["address"],
-                      )
-                    : const Text(""),
-              ],
-            );
-          }),
     );
   }
 }
