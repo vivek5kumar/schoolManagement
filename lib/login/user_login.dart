@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:schoolmanagement/Utils/regex.dart';
 import 'package:schoolmanagement/controller/loginController.dart';
 import 'package:schoolmanagement/custom_widgets/colors.dart';
 import 'package:schoolmanagement/custom_widgets/custom_sizes.dart';
