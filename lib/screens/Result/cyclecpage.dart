@@ -123,30 +123,82 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.red,
-      child: ListView.builder(
-          itemCount: 20,
-          itemBuilder: (context, index) {
-            return Card(
-              child: Text(index.toString()),
-            );
-          }),
-    );
+        color: Colors.red,
+        child: GridView.builder(
+            itemCount: 20,
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 200,
+                childAspectRatio: 3 / 2,
+                crossAxisSpacing: 5,
+                mainAxisSpacing: 5),
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: kLightBlueColor,
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Center(child: Text(index.toString())),
+                ),
+              );
+            }));
   }
 }
 
 class WalkPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.blue,
-      child: const Center(
-          child: Text('Walk Page',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20.0))),
+    return Scaffold(
+      body: Column(
+        children: [
+          ListTile(
+            leading: Hero(
+              tag: 'hero-rectangle',
+              child: BoxWidget(size: Size(50.0, 50.0)),
+            ),
+            onTap: () => _gotoDetailsPage(context),
+            title: const Text(
+              'Tap on the icon to view hero animation transition.',
+            ),
+          )
+        ],
+      ),
     );
+  }
+
+  void _gotoDetailsPage(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute<void>(
+      builder: (BuildContext context) => Scaffold(
+        appBar: AppBar(
+          title: const Text('Second Page'),
+        ),
+        body: Center(
+          child: Hero(
+            tag: 'hero-rectangle',
+            child: BoxWidget(
+              name: "vivek",
+              size: const Size(200.0, 200.0),
+            ),
+          ),
+        ),
+      ),
+    ));
+  }
+}
+
+class BoxWidget extends StatelessWidget {
+  String? name;
+  BoxWidget({this.name, super.key, required this.size});
+
+  final Size size;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        width: size.width,
+        height: size.height,
+        color: Colors.blue,
+        child: Center(child: Text(name.toString())));
   }
 }
 

@@ -27,6 +27,11 @@ class _PanVerifyPageState extends State<PanVerifyPage> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
+              validator: (val) {
+                if (val!.isEmpty) {
+                  return "required";
+                }
+              },
               decoration: InputDecoration(
                   labelText: 'ABC1234',
                   border: OutlineInputBorder(
@@ -35,23 +40,71 @@ class _PanVerifyPageState extends State<PanVerifyPage> {
               controller: panCtrl,
               focusNode: myFocusNode,
               textCapitalization: TextCapitalization.characters,
-              keyboardType: (panCtrl.text.length >= 5)
-                  ? TextInputType.number
-                  : TextInputType.name,
+              keyboardType: keyboardType,
               onChanged: (text) {
-                if (panCtrl.text != text.toUpperCase()) {
-                  panCtrl.value =
-                      panCtrl.value.copyWith(text: text.toUpperCase());
-                }
-                if (panCtrl.text.length == 5) {
+                if (panCtrl.text.length > 4 && panCtrl.text.length < 6) {
                   setState(() {
                     myFocusNode.unfocus();
                     Future.delayed(const Duration(milliseconds: 50))
                         .then((value) {
                       myFocusNode.requestFocus();
                     });
+                    keyboardType = TextInputType.number;
+                  });
+                } else if (panCtrl.text.length > 8) {
+                  setState(() {
+                    myFocusNode.unfocus();
+                    Future.delayed(const Duration(milliseconds: 50))
+                        .then((value) {
+                      myFocusNode.requestFocus();
+                    });
+                    keyboardType = TextInputType.text;
                   });
                 }
+                // if (panCtrl.text.length < 6 && panCtrl.text.length > 4) {
+                //   setState(() {
+                //     myFocusNode.unfocus();
+                //     Future.delayed(const Duration(milliseconds: 50))
+                //         .then((value) {
+                //       myFocusNode.requestFocus();
+                //     });
+                //     keyboardType = TextInputType.number;
+                //   });
+                // } else if (panCtrl.text.length < 10 &&
+                //     panCtrl.text.length > 8) {
+                //   setState(() {
+                //     myFocusNode.unfocus();
+                //     Future.delayed(const Duration(milliseconds: 50))
+                //         .then((value) {
+                //       myFocusNode.requestFocus();
+                //     });
+                //     keyboardType = TextInputType.text;
+                //   });
+                // } else if (panCtrl.text.length < 10 &&
+                //     panCtrl.text.length < 10) {
+                //   setState(() {
+                //     myFocusNode.unfocus();
+                //     Future.delayed(const Duration(microseconds: 500))
+                //         .then((value) {
+                //       myFocusNode.requestFocus();
+                //     });
+                //     keyboardType = TextInputType.number;
+                //   });
+                // }
+
+                if (panCtrl.text != text.toUpperCase()) {
+                  panCtrl.value =
+                      panCtrl.value.copyWith(text: text.toUpperCase());
+                }
+                // if (panCtrl.text.length == 5) {
+                //   setState(() {
+                //     myFocusNode.unfocus();
+                //     Future.delayed(const Duration(milliseconds: 50))
+                //         .then((value) {
+                //       myFocusNode.requestFocus();
+                //     });
+                //   });
+                // }
               },
               inputFormatters: [
                 FilteringTextInputFormatter.allow(RegExp('[a-zA-Z0-9]'))
