@@ -101,11 +101,9 @@ class DashBordController extends GetxController {
                   "Exit app",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-                content: Container(
-                  child: const Text(
-                    "Are you sure you want to exit?",
-                    style: TextStyle(fontSize: 18),
-                  ),
+                content: const Text(
+                  "Are you sure you want to exit?",
+                  style: TextStyle(fontSize: 18),
                 ),
                 actions: [
                   TextButton(

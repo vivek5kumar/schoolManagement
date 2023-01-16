@@ -5,6 +5,7 @@ import 'package:schoolmanagement/controller/profile_controller.dart';
 import 'package:schoolmanagement/custom_widgets/account_textfield.dart';
 import 'package:schoolmanagement/custom_widgets/colors.dart';
 import 'package:schoolmanagement/custom_widgets/custom_sizes.dart';
+import 'package:schoolmanagement/screens/dashboard/dashboard.dart';
 
 class StudentAccount extends StatefulWidget {
   const StudentAccount({super.key});
@@ -347,6 +348,11 @@ class _StudentAccountState extends State<StudentAccount> {
                         },
                         child: const Text("Submit")),
                   ),
+                  ElevatedButton(
+                      onPressed: () {
+                        Get.to(DashBoard());
+                      },
+                      child: Text("back to D"))
                 ],
               ),
             ),

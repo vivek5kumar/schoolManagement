@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
-import 'package:qr_flutter/qr_flutter.dart';
+
 import 'package:schoolmanagement/custom_widgets/colors.dart';
 
 class FeePaymentPage extends StatefulWidget {
@@ -39,6 +39,9 @@ class _FeePaymentPageState extends State<FeePaymentPage> {
             padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5),
             child: Column(
               children: [
+                const SizedBox(
+                  width: 20,
+                ),
                 InkWell(
                     onTap: () => scanQRCode(),
                     child: const CircleAvatar(
@@ -57,7 +60,7 @@ class _FeePaymentPageState extends State<FeePaymentPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               "Scan Result",
               style: TextStyle(
                   fontSize: 16,
@@ -69,22 +72,11 @@ class _FeePaymentPageState extends State<FeePaymentPage> {
             ),
             const Text(
               "QRCode",
-              style: TextStyle(fontSize: 28, color: Colors.white),
+              style: TextStyle(fontSize: 28, color: Colors.black),
             ),
             const SizedBox(
               height: 72,
             ),
-            // QrImage(
-            //   data: 'This QR code has an embedded image as well',
-            //   version: QrVersions.auto,
-            //   size: 150,
-            //   gapless: false,
-            //   embeddedImage:
-            //       const AssetImage('assets/images/my_embedded_image.png'),
-            //   embeddedImageStyle: QrEmbeddedImageStyle(
-            //     size: Size(80, 80),
-            //   ),
-            // )
           ],
         ),
       )),

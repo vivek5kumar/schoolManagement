@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:schoolmanagement/custom_widgets/colors.dart';
 
 class TrackingPage extends StatefulWidget {
@@ -152,11 +153,15 @@ class WalkPage extends StatelessWidget {
       body: Column(
         children: [
           ListTile(
-            leading: Hero(
-              tag: 'hero-rectangle',
-              child: BoxWidget(size: Size(50.0, 50.0)),
+            leading: GestureDetector(
+              onTap: () => _gotoDetailsPage(context),
+              child: const Hero(
+                  tag: "",
+                  child: CircleAvatar(
+                    foregroundColor: kPrimaryColor,
+                    child: Text("vivek"),
+                  )),
             ),
-            onTap: () => _gotoDetailsPage(context),
             title: const Text(
               'Tap on the icon to view hero animation transition.',
             ),
@@ -167,18 +172,13 @@ class WalkPage extends StatelessWidget {
   }
 
   void _gotoDetailsPage(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute<void>(
-      builder: (BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: const Text('Second Page'),
-        ),
-        body: Center(
-          child: Hero(
-            tag: 'hero-rectangle',
-            child: BoxWidget(
-              name: "vivek",
-              size: const Size(200.0, 200.0),
-            ),
+    Get.to(Scaffold(
+      body: Center(
+        child: Hero(
+          tag: 'hero-rectangle',
+          child: BoxWidget(
+            name: "vivek",
+            size: const Size(200.0, 200.0),
           ),
         ),
       ),

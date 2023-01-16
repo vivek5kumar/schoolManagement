@@ -4,6 +4,9 @@ import 'package:schoolmanagement/controller/resultController.dart';
 import 'package:schoolmanagement/custom_widgets/colors.dart';
 import 'package:schoolmanagement/custom_widgets/custom_sizes.dart';
 import 'package:schoolmanagement/screens/Result/practicepage.dart';
+import 'package:schoolmanagement/screens/Result/textdisable.dart';
+
+import 'drop_plus.dart';
 
 class ExamResult extends StatefulWidget {
   const ExamResult({super.key});
