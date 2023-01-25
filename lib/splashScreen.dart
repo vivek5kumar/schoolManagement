@@ -4,7 +4,6 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:schoolmanagement/controller/loginController.dart';
-import 'package:schoolmanagement/login/user_login.dart';
 import 'package:schoolmanagement/no_internate.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

@@ -5,6 +5,7 @@ import 'package:schoolmanagement/custom_widgets/colors.dart';
 import 'package:schoolmanagement/custom_widgets/custom_sizes.dart';
 import 'package:schoolmanagement/screens/Result/practicepage.dart';
 import 'package:schoolmanagement/screens/Result/textdisable.dart';
+import 'package:schoolmanagement/screens/Result/weekday.dart';
 
 import 'drop_plus.dart';
 
@@ -210,7 +211,7 @@ class _ExamResultState extends State<ExamResult> {
               ),
               ElevatedButton(
                   onPressed: () {
-                    Get.to(PracticePage());
+                    Get.to(WeekDays());
                   },
                   child: Text("practice page")),
             ],

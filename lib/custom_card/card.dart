@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:schoolmanagement/custom_widgets/colors.dart';
 
+// ignore: must_be_immutable
 class MyCardPage extends StatelessWidget {
   String? name;
   String? qualificatin;
