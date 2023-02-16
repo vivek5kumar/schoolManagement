@@ -6,13 +6,8 @@ import 'package:schoolmanagement/custom_widgets/colors.dart';
 
 class MessageController extends GetxController {
   List<Map<String, dynamic>> messageList = [
-    {
-      "id": 1,
-      "name": "Vivek Kumar",
-      "msg": "hi,dear how r you",
-      "date": "12/11/2021"
-    },
-    {"id": 2, "name": "mantosh Kumar", "msg": "", "date": "12/11/2021"},
+    {"id": 1, "name": "Vivek Kumar", "msg": "hi vivek kumar", "date": ""},
+    {"id": 2, "name": "mantosh Kumar", "msg": "", "date": ""},
     {"id": 3, "name": "Garun Kumar", "msg": "", "date": "12/11/2021"},
     {"id": 4, "name": "Manish Kumar", "msg": "Hey guy", "date": "12/11/2021"},
     {"id": 5, "name": "Nishant Kumar", "msg": "Hey guy", "date": "12/11/2021"},
@@ -46,12 +41,13 @@ class MessageController extends GetxController {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      messageList[i].containsKey("name")
+                      messageList[i].containsKey("date") && messageList[i] != ""
                           ? Text(
                               messageList[i]["date"].toString(),
                               style: const TextStyle(color: kWhiteColor),
                             )
-                          : const Text("no data"),
+                          : const Text("no data",
+                              style: const TextStyle(color: kWhiteColor)),
                       Text(
                         messageList[i]["name"],
                         style: const TextStyle(color: kWhiteColor),
@@ -62,10 +58,14 @@ class MessageController extends GetxController {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text("SMS :"),
-                            Text(
-                              messageList[i]["msg"],
-                              style: const TextStyle(color: kWhiteColor),
+                            Row(
+                              children: [
+                                const Text("SMS :"),
+                                Text(
+                                  messageList[i]["msg"],
+                                  style: const TextStyle(color: kWhiteColor),
+                                ),
+                              ],
                             ),
                             InkWell(
                                 onTap: () {

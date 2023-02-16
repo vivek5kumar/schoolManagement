@@ -10,7 +10,7 @@ class WeekDays extends StatefulWidget {
 
 class _WeekDaysState extends State<WeekDays> {
   RxList setDays = [].obs;
- 
+
   List<String> daysCheckbox = [
     "Every day",
     "Mon",

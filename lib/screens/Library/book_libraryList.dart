@@ -122,7 +122,7 @@ class _BookLibraryState extends State<BookLibrary> {
                                   child: ListTile(
                                     title: Padding(
                                       padding: const EdgeInsets.all(5.0),
-                                      child: Column(
+                                      child: Column( 
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
