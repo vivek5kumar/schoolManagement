@@ -32,19 +32,35 @@ class _CustomeInfoWindowPageState extends State<CustomeInfoWindowPage> {
           position: _latlang[i],
           onTap: () {
             _customInfoWindowController.addInfoWindow!(
-                Container(
-                    height: 300,
-                    width: 200,
-                    decoration: BoxDecoration(
+                Column(
+                  children: [
+                    Container(
+                      height: 170,
+                      width: 200,
+                      decoration: BoxDecoration(
                         color: Colors.white,
                         border: Border.all(color: Colors.red),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: const Center(
-                      child: CircleAvatar(
-                        radius: 30,
-                        backgroundColor: Colors.blue,
                       ),
-                    )),
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 80,
+                            width: 200,
+                            decoration: const BoxDecoration(),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [Text("No Data..")],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
                 _latlang[i]);
           },
           icon: BitmapDescriptor.defaultMarker,
@@ -59,30 +75,44 @@ class _CustomeInfoWindowPageState extends State<CustomeInfoWindowPage> {
                   Column(
                     children: [
                       Container(
-                        height: 100,
-                        width: 100,
+                        height: 170,
+                        width: 200,
                         decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: Colors.red),
-                            borderRadius: BorderRadius.circular(10)),
+                          color: Colors.white,
+                          border: Border.all(color: Colors.red),
+                        ),
                         child: Column(
                           children: [
                             Container(
                               height: 80,
-                              width: 100,
+                              width: 200,
                               decoration: const BoxDecoration(
                                 image: DecorationImage(
-                                  image: AssetImage("assets/images/cloth.jpg"),
+                                  fit: BoxFit.fill,
+                                  image:
+                                      AssetImage("assets/images/citizen.jpg"),
                                 ),
                               ),
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                const Text("Product"),
-                                const Text("Price")
-                              ],
-                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    "Description:",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  const Text(
+                                    "A good, affordable watch has a quartz movement or a certified mechanical  You will almost always find a quartz movement",
+                                    maxLines: 3,
+                                    overflow: TextOverflow.ellipsis,
+                                  )
+                                ],
+                              ),
+                            )
                           ],
                         ),
                       ),
