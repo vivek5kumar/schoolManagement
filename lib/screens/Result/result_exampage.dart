@@ -3,9 +3,7 @@ import 'package:get/get.dart';
 import 'package:schoolmanagement/controller/resultController.dart';
 import 'package:schoolmanagement/custom_widgets/colors.dart';
 import 'package:schoolmanagement/custom_widgets/custom_sizes.dart';
-import 'package:schoolmanagement/googlemap/custome_info_window.dart';
 import 'package:schoolmanagement/googlemap/googlemap.dart';
-import 'package:schoolmanagement/screens/Result/weekday.dart';
 
 import 'drop_plus.dart';
 
@@ -211,7 +209,7 @@ class _ExamResultState extends State<ExamResult> {
               ),
               ElevatedButton(
                   onPressed: () {
-                    Get.to(CustomeInfoWindowPage());
+                    Get.to(GoogleMapPage());
                   },
                   child: Text("practice page")),
             ],

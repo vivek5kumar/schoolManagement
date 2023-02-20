@@ -22,12 +22,11 @@ class _CustomeInfoWindowPageState extends State<CustomeInfoWindowPage> {
     const LatLng(28.6076, 77.3683),
     const LatLng(28.5996, 77.3736)
   ];
-  List<Marker> _marker = [];
+  final List<Marker> _marker = [];
 
   loaddata() {
     for (int i = 0; i < _latlang.length; i++) {
-      if (i % 2 == 0) {
-        _marker.add(Marker(
+      _marker.add(Marker(
           markerId: MarkerId(i.toString()),
           position: _latlang[i],
           onTap: () {
@@ -46,14 +45,29 @@ class _CustomeInfoWindowPageState extends State<CustomeInfoWindowPage> {
                           Container(
                             height: 80,
                             width: 200,
-                            decoration: const BoxDecoration(),
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                fit: BoxFit.fill,
+                                image: AssetImage("assets/images/citizen.jpg"),
+                              ),
+                            ),
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [Text("No Data..")],
+                              children: [
+                                const Text(
+                                  "Description:",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                const Text(
+                                  "A good, affordable watch has a quartz movement or a certified mechanical  You will almost always find a quartz movement",
+                                  maxLines: 3,
+                                  overflow: TextOverflow.ellipsis,
+                                )
+                              ],
                             ),
                           )
                         ],
@@ -63,66 +77,8 @@ class _CustomeInfoWindowPageState extends State<CustomeInfoWindowPage> {
                 ),
                 _latlang[i]);
           },
-          icon: BitmapDescriptor.defaultMarker,
-        ));
-        setState(() {});
-      } else {
-        _marker.add(Marker(
-            markerId: MarkerId(i.toString()),
-            position: _latlang[i],
-            onTap: () {
-              _customInfoWindowController.addInfoWindow!(
-                  Column(
-                    children: [
-                      Container(
-                        height: 170,
-                        width: 200,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(color: Colors.red),
-                        ),
-                        child: Column(
-                          children: [
-                            Container(
-                              height: 80,
-                              width: 200,
-                              decoration: const BoxDecoration(
-                                image: DecorationImage(
-                                  fit: BoxFit.fill,
-                                  image:
-                                      AssetImage("assets/images/citizen.jpg"),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const Text(
-                                    "Description:",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
-                                  const Text(
-                                    "A good, affordable watch has a quartz movement or a certified mechanical  You will almost always find a quartz movement",
-                                    maxLines: 3,
-                                    overflow: TextOverflow.ellipsis,
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  _latlang[i]);
-            },
-            icon: BitmapDescriptor.defaultMarker));
-        setState(() {});
-      }
+          icon: BitmapDescriptor.defaultMarker));
+      setState(() {});
     }
   }
 
