@@ -45,6 +45,9 @@ dependencies:
   fluttertoast: ^8.1.2
   google_maps_flutter: ^2.2.3
   custom_info_window: ^1.0.1
+  badges: ^3.0.2
+  path_provider: ^2.0.12
+  sqflite: ^2.2.4+1
   
 
 

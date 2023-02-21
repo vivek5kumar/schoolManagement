@@ -26,6 +26,8 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
     "assets/images/car.png",
     "assets/images/love.png",
     "assets/images/motorbike.png",
+    "assets/images/motorbike.png",
+    "assets/images/motorbike.png",
     "assets/images/placeholder.png",
   ];
 
@@ -33,13 +35,17 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
     const LatLng(28.6210, 77.3812),
     const LatLng(28.5798, 77.3657),
     const LatLng(28.6076, 77.3683),
-    const LatLng(28.5996, 77.3736)
+    const LatLng(28.5996, 77.3736),
+    const LatLng(28.6055, 77.3769),
+    const LatLng(28.6033, 77.3540)
   ];
   List<String> areaName = [
     "Gali No 2,Mamura Noida Sector 63",
     "Noida Sector 51",
     "Noida Sector 59",
     "Noida Sector 71",
+    "Noida Sector 66",
+    "Noida Sector 57",
   ];
 
   final List<Marker> _marker = [];
