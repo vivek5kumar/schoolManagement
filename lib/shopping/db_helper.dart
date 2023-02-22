@@ -24,6 +24,7 @@ class DBHelper {
 // for create table in database
 
   _onCreate(Database db, int version) async {
+    await db.execute('drop table cart');
     await db.execute(
         'CREATE TABLE cart(id INTEGER PRIMARY KEY AUTOINCREMENT,productId VARCHAR UNIQUE,productName TEXT,'
         'initialPrice INTEGER,productPrice INTEGER,quantity INTEGER, unitTag TEXT,image TEXT)');

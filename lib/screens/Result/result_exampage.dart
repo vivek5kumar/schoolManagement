@@ -4,7 +4,9 @@ import 'package:schoolmanagement/controller/resultController.dart';
 import 'package:schoolmanagement/custom_widgets/colors.dart';
 import 'package:schoolmanagement/custom_widgets/custom_sizes.dart';
 import 'package:schoolmanagement/googlemap/googlemap.dart';
+import 'package:schoolmanagement/shopping/name_text.dart';
 import 'package:schoolmanagement/shopping/product_list_screen.dart';
+import 'package:schoolmanagement/shopping/statecity.dart';
 
 import 'drop_plus.dart';
 
@@ -111,7 +113,7 @@ class _ExamResultState extends State<ExamResult> {
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10)),
-                              contentPadding: EdgeInsets.all(10),
+                              contentPadding: const EdgeInsets.all(10),
                             ),
                             value: resultCtrl.selectSem,
                             items: resultCtrl.examSemester.map((items) {
@@ -167,7 +169,7 @@ class _ExamResultState extends State<ExamResult> {
                               return "Select Book";
                             },
                             decoration: InputDecoration(
-                                contentPadding: EdgeInsets.all(12),
+                                contentPadding: const EdgeInsets.all(12),
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10))),
                             value: resultCtrl.selectBook,
@@ -210,9 +212,9 @@ class _ExamResultState extends State<ExamResult> {
               ),
               ElevatedButton(
                   onPressed: () {
-                    Get.to(ShoppingPage());
+                    Get.to(TestTextfield());
                   },
-                  child: Text("practice page")),
+                  child: const Text("practice page")),
             ],
           ),
         ),

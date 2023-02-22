@@ -14,11 +14,24 @@ class ShoppingPage extends StatefulWidget {
 
 class _ShoppingPageState extends State<ShoppingPage> {
   DBHelper? dbHelper = DBHelper();
-
+  var st = [];
+  var st1 = [];
   bool isLoading = false;
 
   setLoading(val) {
     isLoading = val;
+  }
+
+  void printFun() {
+    for (int i = 0; i < 10; i++) {
+      if (i % 2 == 0) {
+        st.add(i);
+      } else {
+        st1.add(i);
+      }
+    }
+    print("first line:${st}");
+    print(st1);
   }
 
   List<String> productName = [
@@ -53,6 +66,12 @@ class _ShoppingPageState extends State<ShoppingPage> {
     'https://t3.ftcdn.net/jpg/01/51/01/68/240_F_151016880_jBCeI7vYIrlZOPt4h0buJ0hXHmWEnKWN.jpg',
     'https://t4.ftcdn.net/jpg/04/57/86/93/240_F_457869303_c6rC0C8jXn1Wqa1ObEj6e8flO91ZA9g2.jpg',
   ];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    printFun();
+  }
 
   @override
   Widget build(BuildContext context) {
