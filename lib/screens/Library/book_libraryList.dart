@@ -61,7 +61,7 @@ class _BookLibraryState extends State<BookLibrary> {
                         fillColor: kDarkBlueColor,
                         filled: true,
                         hintText: "search here...",
-                        hintStyle: TextStyle(color: Colors.white),
+                        hintStyle: const TextStyle(color: Colors.white),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10))),
                   ),
@@ -122,7 +122,7 @@ class _BookLibraryState extends State<BookLibrary> {
                                   child: ListTile(
                                     title: Padding(
                                       padding: const EdgeInsets.all(5.0),
-                                      child: Column( 
+                                      child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
