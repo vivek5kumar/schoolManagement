@@ -7,13 +7,18 @@ import 'package:schoolmanagement/custom_widgets/colors.dart';
 class MessageController extends GetxController {
   List<Map<String, dynamic>> messageList = [
     {"id": 1, "name": "Vivek Kumar", "msg": "hi vivek kumar", "date": ""},
-    {"id": 2, "name": "mantosh Kumar", "msg": "", "date": ""},
+    {
+      "id": 2,
+      "name": "mantosh Kumar",
+      "msg": "hi mantosh how r you",
+      "date": ""
+    },
     {"id": 3, "name": "Garun Kumar", "msg": "", "date": "12/11/2021"},
     {"id": 4, "name": "Manish Kumar", "msg": "Hey guy", "date": "12/11/2021"},
-    {"id": 5, "name": "Nishant Kumar", "msg": "Hey guy", "date": "12/11/2021"},
+    {"id": 5, "name": "Nishant Kumar", "msg": "", "date": "12/11/2021"},
     {"id": 6, "name": "Akash Kumar", "msg": "Hey guy", "date": "12/11/2021"},
     {"id": 7, "name": "Vaibhav Kumar", "msg": "Hey guy", "date": "12/11/2021"},
-    {"id": 8, "name": "Ankit Kumar", "msg": "Hey guy", "date": "12/11/2021"},
+    {"id": 8, "name": "Ankit Kumar", "msg": "", "date": "12/11/2021"},
     {
       "id": 10,
       "name": "Abhishek Kumar",

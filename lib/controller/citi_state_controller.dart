@@ -9,6 +9,8 @@ class CitiesStateController extends GetxController {
     {"value": "Madhya Pradesh"},
     {"value": "Uttar Pradesh"},
     {"value": "Gujarat"},
+    {"value": "Karnataka"},
+    {"value": "Chennai"},
   ];
 
   List stateCity = [
@@ -35,13 +37,27 @@ class CitiesStateController extends GetxController {
     {
       "id": "Gujarat",
       "value": ["Varodara", "Rajkot", "Patan", "Anand", "Baruch"]
+    },
+    {
+      "id": "Karnataka",
+      "value": ["Vijayanagara", " Davanagere", "Chamarajanagara", " Ramanagara"]
+    },
+    {
+      "id": "Chennai",
+      "value": [
+        "Aminjikarai",
+        "Madhavaram",
+        "Purasawalkam",
+        "Shollinganallur",
+        "Thiruvottiyur"
+      ]
     }
   ];
   var filterCity = [];
   citiesFun(value) {
     filterCity.clear();
     if (value == "Select State") {
-    } else {
+    } else {   
       if (stateCity.where((element) {
         return element['id'] == value;
       }).isNotEmpty) {

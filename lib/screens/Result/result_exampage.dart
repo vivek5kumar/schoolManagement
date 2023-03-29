@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:schoolmanagement/controller/resultController.dart';
 import 'package:schoolmanagement/custom_widgets/colors.dart';
 import 'package:schoolmanagement/custom_widgets/custom_sizes.dart';
+import 'package:schoolmanagement/screens/Result/graphpage.dart';
 import 'package:schoolmanagement/shopping/name_textfield.dart';
 
 import 'package:schoolmanagement/shopping/statecity.dart';
@@ -211,7 +212,7 @@ class _ExamResultState extends State<ExamResult> {
               ),
               ElevatedButton(
                   onPressed: () {
-                    Get.to(DropDown());
+                    Get.to(MyHomePage());
                   },
                   child: const Text("practice page")),
             ],

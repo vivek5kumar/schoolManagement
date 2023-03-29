@@ -82,14 +82,14 @@ class _ShoppingPageState extends State<ShoppingPage> {
         centerTitle: true,
         actions: [
           Center(
-            child: Badge(
-              badgeContent: Text(
-                cartController.getCounter().toString(),
-                style: TextStyle(color: Colors.white),
+              // child: Badge(
+              //   badgeContent: Text(
+              //     cartController.getCounter().toString(),
+              //     style: TextStyle(color: Colors.white),
+              //   ),
+              //   child: Icon(Icons.shopping_bag),
+              // ),
               ),
-              child: Icon(Icons.shopping_bag),
-            ),
-          ),
           const SizedBox(
             width: 20.0,
           )
