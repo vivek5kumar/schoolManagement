@@ -43,7 +43,7 @@ class _ShowNamePageState extends State<ShowNamePage> {
                     }
                   }
                 },
-                child: const Te   xt("Save"),
+                child: const Text("Save"),
               )
             ],
           ),

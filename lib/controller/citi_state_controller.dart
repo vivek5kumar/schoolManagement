@@ -57,7 +57,7 @@ class CitiesStateController extends GetxController {
   citiesFun(value) {
     filterCity.clear();
     if (value == "Select State") {
-    } else {   
+    } else {
       if (stateCity.where((element) {
         return element['id'] == value;
       }).isNotEmpty) {
@@ -69,6 +69,16 @@ class CitiesStateController extends GetxController {
 
         filterCity.addAll(data);
       }
+    }
+    update();
+  }
+
+  int selectIcon = -1;
+  pickIcon(val) {
+    if (selectIcon == val) {
+      selectIcon = -1;
+    } else {
+      selectIcon = val;
     }
     update();
   }

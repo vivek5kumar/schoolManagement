@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:schoolmanagement/controller/loginController.dart';
+import 'package:schoolmanagement/screens/Library/create_query.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../drawerListScreen/parentsListPage.dart';
@@ -52,7 +53,7 @@ class DrawerListController extends GetxController {
     if (i == 0) {
       Get.back();
     } else if (i == 1) {
-      Get.to(const TeacherList());
+      Get.to(const CityPage());
     } else if (i == 2) {
       Get.to(const StudentList());
     } else if (i == 3) {

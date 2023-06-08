@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:schoolmanagement/models/department.dart';
 
 class ClassController extends GetxController {
   int index = 0;

@@ -76,11 +76,11 @@ class LibraryController extends GetxController {
     if (searchKeyValue.isEmpty) {
       bookResult = bookList;
     } else {
-      bookResult = bookList
+      bookResult.addAll(bookList
           .where((book) => book["bookName"]
               .toLowerCase()
               .contains(searchKeyValue.toLowerCase()))
-          .toList();
+          .toList());
     }
     foundBook = bookResult;
   }

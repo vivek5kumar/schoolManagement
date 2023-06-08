@@ -52,7 +52,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Get.toNamed('/dashBoard');
 
     // isLogin = prefs.getBool(
-    //       "isLogin",
+    //       "isLogin", 
     //     ) ??
     //     false;
     // if (!isLogin) {

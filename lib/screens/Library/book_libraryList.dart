@@ -58,6 +58,15 @@ class _BookLibraryState extends State<BookLibrary> {
                       });
                     },
                     decoration: InputDecoration(
+                        suffixIcon: InkWell(
+                          onTap: () {
+                            searchCtrl.clear();
+                          },
+                          child: const Icon(
+                            Icons.cancel,
+                            color: Colors.white,
+                          ),
+                        ),
                         fillColor: kDarkBlueColor,
                         filled: true,
                         hintText: "search here...",

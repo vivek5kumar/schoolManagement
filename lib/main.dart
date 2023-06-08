@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:schoolmanagement/screens/dashboard/dashboard.dart';
+import 'package:schoolmanagement/screens/futurepage.dart';
+import 'package:schoolmanagement/screens/local_notification.dart';
 import 'package:schoolmanagement/splashScreen.dart';
 
 void main() {
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const SplashScreen(),
         // '/userLogin': (context) => StudentLoginPage(),
-        '/dashBoard': (context) => const DashBoard()
+        '/dashBoard': (context) => DashBoard(),
       },
     );
   }
